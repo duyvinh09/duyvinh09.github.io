@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Get 2FA Code</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-top: 50px;
+    }
+    button {
+      display: block;
+      margin: 0 auto;
+      font-size: 18px;
+      background-color: #4CAF50;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #3e8e41;
+    }
+    #code-container {
+      text-align: center;
+      font-size: 32px;
+      margin-top: 50px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>Get 2FA Code</h1>
+  <button onclick="getCode()">Get Code</button>
+  <div id="code-container"></div>
+  <script>
+    function getCode() {
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', 'https://api.code.pro.vn/2fa/v1/get-code');
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          document.getElementById('code-container').innerHTML = xhr.responseText;
+        }
+        else {
+          alert('Request failed.  Returned status of ' + xhr.status);
+        }
+      };
+      xhr.send();
+    }
+  </script>
+</body>
+</html>
