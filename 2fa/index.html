@@ -1,58 +1,35 @@
+<!-- Created by Dinh Duy Vinh - https://dinhduyvinh.dev/
+██████╗░██╗███╗░░██╗██╗░░██╗██████╗░██╗░░░██╗██╗░░░██╗██╗░░░██╗██╗███╗░░██╗██╗░░██╗
+██╔══██╗██║████╗░██║██║░░██║██╔══██╗██║░░░██║╚██╗░██╔╝██║░░░██║██║████╗░██║██║░░██║
+██║░░██║██║██╔██╗██║███████║██║░░██║██║░░░██║░╚████╔╝░╚██╗░██╔╝██║██╔██╗██║███████║
+██║░░██║██║██║╚████║██╔══██║██║░░██║██║░░░██║░░╚██╔╝░░░╚████╔╝░██║██║╚████║██╔══██║
+██████╔╝██║██║░╚███║██║░░██║██████╔╝╚██████╔╝░░░██║░░░░░╚██╔╝░░██║██║░╚███║██║░░██║
+╚═════╝░╚═╝╚═╝░░╚══╝╚═╝░░╚═╝╚═════╝░░╚═════╝░░░░╚═╝░░░░░░╚═╝░░░╚═╝╚═╝░░╚══╝╚═╝░░╚═╝
+Copyright © 2023 Dinh Duy Vinh. All rights reserved. -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <title>Get 2FA Code</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
-    }
-    h1 {
-      text-align: center;
-      color: #333;
-      margin-top: 50px;
-    }
-    button {
-      display: block;
-      margin: 0 auto;
-      font-size: 18px;
-      background-color: #4CAF50;
-      color: white;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #3e8e41;
-    }
-    #code-container {
-      text-align: center;
-      font-size: 32px;
-      margin-top: 50px;
-      color: #333;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>2FA Facebook</title>
+    <link href='https://i.imgur.com/xK5LabO.png' rel="icon" type="image/x-icon" />
+    <meta content="@duyvinh.09" name="tiktok:site">
+    <meta content="@duyvinh09" name="tele:creator">
+    <meta content="Đinh Duy Vinh" name="Author">
+    <meta content="dinhduyvinh.dev" name="copyright">
+    <meta content="Get code for two factor authentication easiest!" name="description">
+    <meta
+        content="get2fa, get 2fa, get code 2fa, code 2fa, get mã 2fa, lấy mã 2fa, lay ma 2fa, get mã 2fa online, get code 2fa online, getcode2fa, get2fa online"
+        name="keywords">
+    <meta content="Get 2Fa Live" property="og:image:alt">
+    <meta content="https://editor.code.pro.vn/assets/images/image.jpg" property="og:image">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="./style.css">
 </head>
+
 <body>
-  <h1>Get 2FA Code</h1>
-  <button onclick="getCode()">Get Code</button>
-  <div id="code-container"></div>
-  <script>
-    function getCode() {
-      var xhr = new XMLHttpRequest();
-      xhr.open('GET', 'https://api.code.pro.vn/2fa/v1/get-code');
-      xhr.onload = function() {
-        if (xhr.status === 200) {
-          document.getElementById('code-container').innerHTML = xhr.responseText;
-        }
-        else {
-          alert('Request failed.  Returned status of ' + xhr.status);
-        }
-      };
-      xhr.send();
-    }
-  </script>
+    <script src="./api.js"></script>
 </body>
+
 </html>
