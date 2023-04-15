@@ -1,0 +1,696 @@
+
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+<head>
+<link href='https://www.blogger.com/static/v1/widgets/55013136-widget_css_bundle.css' rel='stylesheet' type='text/css'/>
+<meta content='width=device-width, initial-scale=1' name='viewport'/>
+<title>
+  Stick Hero</title>
+<!-- Bắt đầu viết Css cho web -->
+<style id='page-skin-1' type='text/css'><!--
+html,
+body {
+height: 100%;
+margin: 0;
+}
+body {
+font-family: Arial, Verdana, sans-serif;
+cursor: grab;
+display: flex;
+justify-content: center;
+align-items: center;
+color: white;
+background-color: #1e1a33;
+}
+div,
+i {
+user-select: none;
+pointer-events: none;
+}
+i {
+position: fixed;
+color: white;
+top: -10%;
+z-index: 9999;
+animation-name: snowflakes-fall, snowflakes-shake;
+animation-duration: 10s, 3s;
+animation-timing-function: linear, ease-in-out;
+animation-iteration-count: infinite, infinite;
+animation-play-state: running, running;
+}
+@keyframes snowflakes-fall {
+0% {
+top: -10%;
+}
+100% {
+top: 100%;
+}
+}
+@keyframes snowflakes-shake {
+0% {
+transform: translateX(0px);
+}
+50% {
+transform: translateX(80px);
+}
+100% {
+transform: translateX(0px);
+}
+}
+
+--></style>
+<meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
+<meta name='google-adsense-platform-domain' content='blogspot.com'/>
+
+</head>
+<!-- Bắt đầu phần hiển thị trên web -->
+<body>
+<script>
+    let status = "waiting";
+  let lastTimestamp;
+  let heroX;
+  let heroY;
+  let sceneOffset;
+  let score = 0;
+  let platforms = [];
+  let sticks = [];
+  let trees = [];
+  let clouds = [];
+
+  const config = {
+    canvasWidth: 375,
+    canvasHeight: 375,
+    platformHeight: 100,
+    heroDistanceFromEdge: 10,
+    paddingX: 100,
+    perfectAreaSize: 10,
+    backgroundSpeedMultiplier: 0.2,
+    speed: 4,
+    heroWidth: 17,
+    heroHeight: 30
+  };
+
+  const colours = {
+    lightBg: "#62AFB9",
+    medBg: "#182757",
+    darkBg: "#0D5B66",
+    lightHill: "#E9E9E9",
+    medHill: "#34A65F",
+    darkHill: "#07133A",
+    platform: "#9B4546",
+    platformTop: "#620E0E",
+    em: "#CC231E",
+    skin: "#CF6D60"
+  };
+
+  const hills = [
+    {
+      baseHeight: 120,
+      amplitude: 20,
+      stretch: 0.5,
+      colour: colours.lightHill
+    },
+    {
+      baseHeight: 100,
+      amplitude: 10,
+      stretch: 1,
+      colour: colours.medHill
+    },
+    {
+      baseHeight: 70,
+      amplitude: 20,
+      stretch: 0.5,
+      colour: colours.darkHill
+    }
+  ];
+
+  const scoreElement = createElementStyle(
+    "div",
+    `position:absolute;top:1.5em;font-size:5em;font-weight:900;text-shadow:${addShadow(
+      colours.darkHill,
+      7
+    )}`
+  );
+  const canvas = createElementStyle("canvas");
+  const introductionElement = createElementStyle(
+    "div",
+    `font-size:0.9em;position:absolute;text-align:center;transition:opacity 2s;width:250px;color:#000`,
+    "Nhấn và giữ chuột để kéo dài cây gậy"
+  );
+  const perfectElement = createElementStyle(
+    "div",
+    "position:absolute;opacity:0;transition:opacity 2s;color:#000",
+    "Double Score"
+  );
+  const restartButton = createElementStyle(
+    "button",
+    `width:120px;height:120px;position:absolute;border-radius:50%;color:white;background-color:${colours.em};border:none;font-weight:700;font-size:1.2em;display:none;cursor:pointer`,
+    "RESTART"
+  );
+
+  // Adding snow
+  // for (let i = 0; i <= 30; i++) {
+  //   createElementStyle(
+  //     "i",
+  //     `font-size: ${3 * Math.random()}em;left: ${
+  //       100 * Math.random()
+  //     }%; animation-delay: ${10 * Math.random()}s, ${2 * Math.random()}s`,
+  //     "."
+  //   );
+  // }
+
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const ctx = canvas.getContext("2d");
+
+  Array.prototype.last = function () {
+    return this[this.length - 1];
+  };
+
+  Math.sinus = function (degree) {
+    return Math.sin((degree / 180) * Math.PI);
+  };
+
+  window.addEventListener("keydown", function (event) {
+    if (event.key == " ") {
+      event.preventDefault();
+      resetGame();
+      return;
+    }
+  });
+
+  ["mousedown", "touchstart"].forEach(function (evt) {
+    window.addEventListener(evt, function (event) {
+      if (status == "waiting") {
+        lastTimestamp = undefined;
+        introductionElement.style.opacity = 0;
+        status = "stretching";
+        window.requestAnimationFrame(animate);
+      }
+    });
+  });
+
+  ["mouseup", "touchend"].forEach(function (evt) {
+    window.addEventListener(evt, function (event) {
+      if (status == "stretching") {
+        status = "turning";
+      }
+    });
+  });
+
+  window.addEventListener("resize", function (event) {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    draw();
+  });
+
+  restartButton.addEventListener("click", function (event) {
+    event.preventDefault();
+    resetGame();
+    restartButton.style.display = "none";
+  });
+
+  window.requestAnimationFrame(animate);
+
+  resetGame();
+
+  function resetGame() {
+    status = "waiting";
+    lastTimestamp = undefined;
+    sceneOffset = 0;
+    score = 0;
+    introductionElement.style.opacity = 1;
+    perfectElement.style.opacity = 0;
+    restartButton.style.display = "none";
+    scoreElement.innerText = score;
+    platforms = [{ x: 50, w: 50 }];
+    heroX = platforms[0].x + platforms[0].w - config.heroDistanceFromEdge;
+    heroY = 0;
+    sticks = [{ x: platforms[0].x + platforms[0].w, length: 0, rotation: 0 }];
+    trees = [];
+    clouds = [];
+
+    for (let i = 0; i <= 20; i++) {
+      if (i <= 3) generatePlatform();
+      generateTree();
+      generateCloud();
+    }
+
+    draw();
+  }
+
+  function generateCloud() {
+    const minimumGap = 60;
+    const maximumGap = 300;
+
+    const lastCloud = clouds[clouds.length - 1];
+    let furthestX = lastCloud ? lastCloud.x : 0;
+
+    const x =
+      furthestX +
+      minimumGap +
+      Math.floor(Math.random() * (maximumGap - minimumGap));
+
+    const y =
+      minimumGap +
+      Math.floor(Math.random() * (maximumGap - minimumGap)) -
+      window.innerHeight / 1.2;
+
+    const w = Math.floor(Math.random() * 15 + 15);
+    clouds.push({ x, y, w });
+  }
+
+  function generateTree() {
+    const minimumGap = 30;
+    const maximumGap = 150;
+
+    const lastTree = trees[trees.length - 1];
+    let furthestX = lastTree ? lastTree.x : 0;
+
+    const x =
+      furthestX +
+      minimumGap +
+      Math.floor(Math.random() * (maximumGap - minimumGap));
+
+    const treeColors = [colours.lightHill, colours.medBg, colours.medHill];
+    const color = treeColors[Math.floor(Math.random() * 3)];
+
+    trees.push({ x, color });
+  }
+
+  function generatePlatform() {
+    const minimumGap = 40;
+    const maximumGap = 200;
+    const minimumWidth = 20;
+    const maximumWidth = 100;
+
+    const lastPlatform = platforms[platforms.length - 1];
+    let furthestX = lastPlatform.x + lastPlatform.w;
+
+    const x =
+      furthestX +
+      minimumGap +
+      Math.floor(Math.random() * (maximumGap - minimumGap));
+    const w =
+      minimumWidth + Math.floor(Math.random() * (maximumWidth - minimumWidth));
+
+    platforms.push({ x, w });
+  }
+
+  function animate(timestamp) {
+    if (!lastTimestamp) {
+      lastTimestamp = timestamp;
+      window.requestAnimationFrame(animate);
+      return;
+    }
+
+    switch (status) {
+      case "waiting":
+        return;
+      case "stretching": {
+        sticks.last().length += (timestamp - lastTimestamp) / config.speed;
+        break;
+      }
+      case "turning": {
+        sticks.last().rotation += (timestamp - lastTimestamp) / config.speed;
+
+        if (sticks.last().rotation > 90) {
+          sticks.last().rotation = 90;
+
+          const [nextPlatform, perfectHit] = thePlatformTheStickHits();
+          if (nextPlatform) {
+            score += perfectHit ? 2 : 1;
+            scoreElement.innerText = score;
+
+            if (perfectHit) {
+              perfectElement.style.opacity = 1;
+              setTimeout(() => (perfectElement.style.opacity = 0), 1000);
+            }
+
+            generatePlatform();
+            generateTree();
+            generateTree();
+
+            generateCloud();
+            generateCloud();
+          }
+
+          status = "walking";
+        }
+        break;
+      }
+      case "walking": {
+        heroX += (timestamp - lastTimestamp) / config.speed;
+
+        const [nextPlatform] = thePlatformTheStickHits();
+        if (nextPlatform) {
+          const maxheroX =
+            nextPlatform.x + nextPlatform.w - config.heroDistanceFromEdge;
+          if (heroX > maxheroX) {
+            heroX = maxheroX;
+            status = "transitioning";
+          }
+        } else {
+          const maxheroX =
+            sticks.last().x + sticks.last().length + config.heroWidth;
+          if (heroX > maxheroX) {
+            heroX = maxheroX;
+            status = "falling";
+          }
+        }
+        break;
+      }
+      case "transitioning": {
+        sceneOffset += (timestamp - lastTimestamp) / (config.speed / 2);
+
+        const [nextPlatform] = thePlatformTheStickHits();
+        if (sceneOffset > nextPlatform.x + nextPlatform.w - config.paddingX) {
+          sticks.push({
+            x: nextPlatform.x + nextPlatform.w,
+            length: 0,
+            rotation: 0
+          });
+          status = "waiting";
+        }
+        break;
+      }
+      case "falling": {
+        if (sticks.last().rotation < 180)
+          sticks.last().rotation += (timestamp - lastTimestamp) / config.speed;
+
+        heroY += (timestamp - lastTimestamp) / (config.speed / 2);
+        const maxheroY =
+          config.platformHeight +
+          100 +
+          (window.innerHeight - config.canvasHeight) / 2;
+        if (heroY > maxheroY) {
+          restartButton.style.display = "block";
+          return;
+        }
+        break;
+      }
+      default:
+        throw Error("Wrong status");
+    }
+
+    draw();
+    window.requestAnimationFrame(animate);
+
+    lastTimestamp = timestamp;
+  }
+
+  function thePlatformTheStickHits() {
+    if (sticks.last().rotation != 90)
+      throw Error(`Stick is ${sticks.last().rotation}&#176;`);
+    const stickFarX = sticks.last().x + sticks.last().length;
+
+    const platformTheStickHits = platforms.find(
+      (platform) => platform.x < stickFarX && stickFarX < platform.x + platform.w
+    );
+
+    if (
+      platformTheStickHits &&
+      platformTheStickHits.x +
+        platformTheStickHits.w / 2 -
+        config.perfectAreaSize / 2 <
+        stickFarX &&
+      stickFarX <
+        platformTheStickHits.x +
+          platformTheStickHits.w / 2 +
+          config.perfectAreaSize / 2
+    )
+      return [platformTheStickHits, true];
+
+    return [platformTheStickHits, false];
+  }
+
+  function draw() {
+    ctx.save();
+    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+    drawBackground();
+    ctx.translate(
+      (window.innerWidth - config.canvasWidth) / 2 - sceneOffset,
+      (window.innerHeight - config.canvasHeight) / 2
+    );
+
+    drawPlatforms();
+    drawHero();
+    drawSticks();
+
+    ctx.restore();
+  }
+
+  function drawPlatforms() {
+    platforms.forEach(({ x, w }) => {
+      ctx.fillStyle = "black";
+      ctx.fillRect(x, config.canvasHeight - config.platformHeight, w, config.platformHeight + (window.innerHeight - config.canvasHeight) / 2);
+
+      if (sticks.last().x < x) {
+        ctx.fillStyle = "red";
+        ctx.fillRect(
+          x + w / 2 - config.perfectAreaSize / 2,
+          config.canvasHeight - config.platformHeight,
+          config.perfectAreaSize,
+          config.perfectAreaSize
+        );
+      }
+    });
+  }
+
+  function drawHero() {
+    ctx.save();
+    ctx.fillStyle = "black";
+    ctx.translate(
+      heroX - config.heroWidth / 2,
+      heroY +
+        config.canvasHeight -
+        config.platformHeight -
+        config.heroHeight / 2
+    );
+
+    ctx.fillRect(
+      -config.heroWidth / 2,
+      -config.heroHeight / 2,
+      config.heroWidth,
+      config.heroHeight - 4
+    );
+
+    const legDistance = 5;
+    ctx.beginPath();
+    ctx.arc(legDistance, 11.5, 3, 0, Math.PI * 2, false);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.arc(-legDistance, 11.5, 3, 0, Math.PI * 2, false);
+    ctx.fill();
+
+    ctx.beginPath();
+    ctx.fillStyle = "white";
+    ctx.arc(5, -7, 3, 0, Math.PI * 2, false);
+    ctx.fill();
+    
+    ctx.fillStyle = "red";
+    ctx.fillRect(-config.heroWidth / 2 - 1, -12, config.heroWidth + 2, 4.5);
+    ctx.beginPath();
+    ctx.moveTo(-9, -14.5);
+    ctx.lineTo(-17, -18.5);
+    ctx.lineTo(-14, -8.5);
+    ctx.fill();
+    ctx.beginPath();
+    ctx.moveTo(-10, -10.5);
+    ctx.lineTo(-15, -3.5);
+    ctx.lineTo(-5, -7);
+    ctx.fill();
+
+    ctx.restore();
+  }
+
+  function drawSticks() {
+    sticks.forEach((stick) => {
+      ctx.save();
+
+      ctx.translate(stick.x, config.canvasHeight - config.platformHeight);
+      ctx.rotate((Math.PI / 180) * stick.rotation);
+
+      ctx.beginPath();
+      ctx.lineWidth = 2;
+      ctx.moveTo(0, 0);
+      ctx.lineTo(0, -stick.length);
+      ctx.stroke();
+
+      ctx.restore();
+    });
+  }
+
+  function drawBackground() {
+    var gradient = ctx.createRadialGradient(
+      window.innerWidth / 2,
+      window.innerHeight / 2,
+      0,
+      window.innerHeight / 2,
+      window.innerWidth / 2,
+      window.innerWidth
+    );
+    gradient.addColorStop(0, "#BBD691");
+    gradient.addColorStop(1, "#FEF1E1");
+    ctx.fillStyle = gradient;
+    ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+
+    hills.forEach((hill) =>
+      drawHill(hill.baseHeight, hill.amplitude, hill.stretch, hill.colour)
+    );
+    trees.forEach((tree) => drawTree(tree.x, tree.color));
+    clouds.forEach((cloud) => drawCloud(cloud.x, cloud.y, cloud.w));
+  }
+
+  function drawHill(baseHeight, amplitude, stretch, color) {
+    ctx.beginPath();
+    ctx.moveTo(0, window.innerHeight);
+    ctx.lineTo(0, getHillY(0, baseHeight, amplitude, stretch));
+    for (let i = 0; i < window.innerWidth; i++) {
+      ctx.lineTo(i, getHillY(i, baseHeight, amplitude, stretch));
+    }
+    ctx.lineTo(window.innerWidth, window.innerHeight);
+    ctx.fillStyle = color;
+    ctx.fill();
+  }
+
+  function drawTree(x, color) {
+    ctx.save();
+    ctx.translate(
+      (-sceneOffset * config.backgroundSpeedMultiplier + x) * hills[1].stretch,
+      getTreeY(x, hills[1].baseHeight, hills[1].amplitude)
+    );
+
+    const treeTrunkHeight = 15;
+    const treeTrunkWidth = 10;
+    const treeCrownHeight = 60;
+    const treeCrownWidth = 30;
+
+    // Draw trunk
+    ctx.fillStyle = colours.darkHill;
+    ctx.fillRect(
+      -treeTrunkWidth / 2,
+      -treeTrunkHeight,
+      treeTrunkWidth,
+      treeTrunkHeight
+    );
+    // Draw crown
+    ctx.beginPath();
+
+    ctx.moveTo(-treeCrownWidth / 2, -treeTrunkHeight * 3);
+    ctx.lineTo(0, -(treeTrunkHeight + treeCrownHeight));
+    ctx.lineTo(treeCrownWidth / 2, -treeTrunkHeight * 3);
+
+    ctx.moveTo(-treeCrownWidth / 2, -treeTrunkHeight * 2);
+    ctx.lineTo(0, -(treeTrunkHeight / 2 + treeCrownHeight));
+    ctx.lineTo(treeCrownWidth / 2, -treeTrunkHeight * 2);
+
+    ctx.moveTo(-treeCrownWidth / 2, -treeTrunkHeight);
+    ctx.lineTo(0, -(treeTrunkHeight + treeCrownHeight / 2));
+    ctx.lineTo(treeCrownWidth / 2, -treeTrunkHeight);
+
+    ctx.fillStyle = color;
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function drawCloud(x, y, width) {
+    ctx.save();
+    ctx.translate(
+      (-sceneOffset * config.backgroundSpeedMultiplier + x) * hills[1].stretch,
+      getTreeY(x, hills[1].baseHeight, hills[1].amplitude)
+    );
+
+    height = width * 1.5;
+    ctx.beginPath();
+    ctx.arc(x, y, width, Math.PI * 0.5, Math.PI * 1.5);
+    ctx.arc(x + height, y - width, height, Math.PI * 1, Math.PI * 2);
+    ctx.arc(x + height * 2, y - width, height, Math.PI * 1.2, Math.PI);
+    ctx.arc(x + width * 3, y, width, Math.PI * 1.5, Math.PI * 0.5);
+    ctx.moveTo(x + width * 3, y + width);
+    ctx.lineTo(x, y + width);
+    ctx.fillStyle = "rgba(255, 255, 255, .3)";
+    ctx.fill();
+
+    ctx.restore();
+  }
+
+  function createCandyPattern() {
+    const patternCanvas = document.createElement("canvas");
+    const pctx = patternCanvas.getContext("2d");
+
+    const max = 15;
+    let i = 0;
+    let x = 0;
+    let z = 90;
+
+    while (i < max) {
+      pctx.beginPath();
+      pctx.moveTo(0, x);
+      pctx.lineTo(0, z);
+      pctx.lineWidth = 24;
+      pctx.strokeStyle = "red";
+      pctx.stroke();
+
+      pctx.beginPath();
+      pctx.moveTo(0, x + 24);
+      pctx.lineTo(0, z + 24);
+      pctx.lineWidth = 24;
+      pctx.strokeStyle = "white";
+      pctx.stroke();
+
+      x += 48;
+      z += 48;
+      i++;
+    }
+
+    return patternCanvas;
+  }
+
+  function getHillY(windowX, baseHeight, amplitude, stretch) {
+    const sineBaseY = window.innerHeight - baseHeight;
+    return (
+      Math.sinus(
+        (sceneOffset * config.backgroundSpeedMultiplier + windowX) * stretch
+      ) *
+        amplitude +
+      sineBaseY
+    );
+  }
+
+  function getTreeY(x, baseHeight, amplitude) {
+    const sineBaseY = window.innerHeight - baseHeight;
+    return Math.sinus(x) * amplitude + sineBaseY;
+  }
+
+  function createElementStyle(element, cssStyles = null, inner = null) {
+    const g = document.createElement(element);
+    if (cssStyles) g.style.cssText = cssStyles;
+    if (inner) g.innerHTML = inner;
+    document.body.appendChild(g);
+    return g;
+  }
+
+  function addShadow(colour, depth) {
+    let shadow = "";
+    for (let i = 0; i <= depth; i++) {
+      shadow += `${i}px ${i}px 0 ${colour}`;
+      shadow += i < depth ? ", " : "";
+    }
+    return shadow;
+  }
+
+  const funs = new Funs('light');
+  funs.signature();
+    </script>
+<div class='navbar no-items section' id='navbar'></div>
+
+<script type="text/javascript" src="https://www.blogger.com/static/v1/widgets/1852870454-widgets.js"></script>
+<script type='text/javascript'>
+window['__wavt'] = 'AOuZoY7r8oAbzsHr5RJUWUI0EjTO0d4uJw:1681567937190';_WidgetManager._Init('//www.blogger.com/rearrange?blogID\x3d2405135259113654854','//stickhero-phamvanlinh.blogspot.com/','2405135259113654854');
+_WidgetManager._SetDataContext([{'name': 'blog', 'data': {'blogId': '2405135259113654854', 'title': 'Stick Hero', 'url': 'https://stickhero-phamvanlinh.blogspot.com/', 'canonicalUrl': 'https://stickhero-phamvanlinh.blogspot.com/', 'homepageUrl': 'https://stickhero-phamvanlinh.blogspot.com/', 'searchUrl': 'https://stickhero-phamvanlinh.blogspot.com/search', 'canonicalHomepageUrl': 'https://stickhero-phamvanlinh.blogspot.com/', 'blogspotFaviconUrl': 'https://stickhero-phamvanlinh.blogspot.com/favicon.ico', 'bloggerUrl': 'https://www.blogger.com', 'hasCustomDomain': false, 'httpsEnabled': true, 'enabledCommentProfileImages': true, 'gPlusViewType': 'FILTERED_POSTMOD', 'adultContent': false, 'analyticsAccountNumber': '', 'encoding': 'UTF-8', 'locale': 'vi', 'localeUnderscoreDelimited': 'vi', 'languageDirection': 'ltr', 'isPrivate': false, 'isMobile': false, 'isMobileRequest': false, 'mobileClass': '', 'isPrivateBlog': false, 'isDynamicViewsAvailable': true, 'feedLinks': '\x3clink rel\x3d\x22alternate\x22 type\x3d\x22application/atom+xml\x22 title\x3d\x22Stick Hero - Atom\x22 href\x3d\x22https://stickhero-phamvanlinh.blogspot.com/feeds/posts/default\x22 /\x3e\n\x3clink rel\x3d\x22alternate\x22 type\x3d\x22application/rss+xml\x22 title\x3d\x22Stick Hero - RSS\x22 href\x3d\x22https://stickhero-phamvanlinh.blogspot.com/feeds/posts/default?alt\x3drss\x22 /\x3e\n\x3clink rel\x3d\x22service.post\x22 type\x3d\x22application/atom+xml\x22 title\x3d\x22Stick Hero - Atom\x22 href\x3d\x22https://www.blogger.com/feeds/2405135259113654854/posts/default\x22 /\x3e\n', 'meTag': '', 'adsenseHostId': 'ca-host-pub-1556223355139109', 'adsenseHasAds': false, 'adsenseAutoAds': false, 'boqCommentIframeForm': true, 'loginRedirectParam': '', 'view': '', 'dynamicViewsCommentsSrc': '//www.blogblog.com/dynamicviews/4224c15c4e7c9321/js/comments.js', 'dynamicViewsScriptSrc': '//www.blogblog.com/dynamicviews/8d33bbae45c6dd58', 'plusOneApiSrc': 'https://apis.google.com/js/platform.js', 'disableGComments': true, 'sharing': {'platforms': [{'name': 'Nh\u1eadn \u0111\u01b0\u1eddng li\xean k\u1ebft', 'key': 'link', 'shareMessage': 'Nh\u1eadn \u0111\u01b0\u1eddng li\xean k\u1ebft', 'target': ''}, {'name': 'Facebook', 'key': 'facebook', 'shareMessage': 'Chia s\u1ebb v\u1edbi Facebook', 'target': 'facebook'}, {'name': 'BlogThis!', 'key': 'blogThis', 'shareMessage': 'BlogThis!', 'target': 'blog'}, {'name': 'Twitter', 'key': 'twitter', 'shareMessage': 'Chia s\u1ebb v\u1edbi Twitter', 'target': 'twitter'}, {'name': 'Pinterest', 'key': 'pinterest', 'shareMessage': 'Chia s\u1ebb v\u1edbi Pinterest', 'target': 'pinterest'}, {'name': 'Email', 'key': 'email', 'shareMessage': 'Email', 'target': 'email'}], 'disableGooglePlus': true, 'googlePlusShareButtonWidth': 0, 'googlePlusBootstrap': '\x3cscript type\x3d\x22text/javascript\x22\x3ewindow.___gcfg \x3d {\x27lang\x27: \x27vi\x27};\x3c/script\x3e'}, 'hasCustomJumpLinkMessage': false, 'jumpLinkMessage': '\u0110\u1ecdc th\xeam', 'pageType': 'index', 'pageName': '', 'pageTitle': 'Stick Hero'}}, {'name': 'features', 'data': {}}, {'name': 'messages', 'data': {'edit': 'Ch\u1ec9nh s\u1eeda', 'linkCopiedToClipboard': '\u0110\xe3 sao ch\xe9p \u0111\u01b0\u1eddng li\xean k\u1ebft v\xe0o b\u1ea3ng nh\u1edb t\u1ea1m!', 'ok': 'Ok', 'postLink': 'Li\xean k\u1ebft b\xe0i \u0111\u0103ng'}}, {'name': 'template', 'data': {'name': 'custom', 'localizedName': 'T\xf9y ch\u1ec9nh', 'isResponsive': false, 'isAlternateRendering': false, 'isCustom': true}}, {'name': 'view', 'data': {'classic': {'name': 'classic', 'url': '?view\x3dclassic'}, 'flipcard': {'name': 'flipcard', 'url': '?view\x3dflipcard'}, 'magazine': {'name': 'magazine', 'url': '?view\x3dmagazine'}, 'mosaic': {'name': 'mosaic', 'url': '?view\x3dmosaic'}, 'sidebar': {'name': 'sidebar', 'url': '?view\x3dsidebar'}, 'snapshot': {'name': 'snapshot', 'url': '?view\x3dsnapshot'}, 'timeslide': {'name': 'timeslide', 'url': '?view\x3dtimeslide'}, 'isMobile': false, 'title': 'Stick Hero', 'description': '', 'url': 'https://stickhero-phamvanlinh.blogspot.com/', 'type': 'feed', 'isSingleItem': false, 'isMultipleItems': true, 'isError': false, 'isPage': false, 'isPost': false, 'isHomepage': true, 'isArchive': false, 'isLabelSearch': false}}]);
+</script>
+</body>
+<!-- Kết thúc phần hiển thị trên web -->
+</html>
