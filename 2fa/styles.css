@@ -1,0 +1,257 @@
+@charset "UTF-8";html,body {
+    cursor: url(mouse-f1.82fd31f4daf82011.png),auto
+}
+
+a:hover {
+    cursor: url(mouse-f2.7059132f16c4d712.png),auto
+}
+
+h1,h2,h3,h4,h5,h6 {
+    margin-top: 0;
+    margin-bottom: .5rem
+}
+
+label {
+    display: inline-block;
+    margin-bottom: .5rem
+}
+
+.form-control,.asColorPicker-input,.dataTables_wrapper select,.jsgrid .jsgrid-table .jsgrid-filter-row input[type=text],.jsgrid .jsgrid-table .jsgrid-filter-row select,.jsgrid .jsgrid-table .jsgrid-filter-row input[type=number],.select2-container--default .select2-selection--single,.select2-container--default .select2-selection--single .select2-search__field,.typeahead,.tt-query,.tt-hint {
+    display: block;
+    width: 100%;
+    height: 2.875rem;
+    padding: .875rem 1.375rem;
+    font-size: .875rem;
+    font-weight: 400;
+    line-height: 1;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 2px;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out
+}
+
+.btn,.fc button,.ajax-upload-dragdrop .ajax-file-upload,.swal2-modal .swal2-buttonswrapper .swal2-styled,.swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm,.swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel,.wizard>.actions a {
+    display: inline-block;
+    font-weight: 400;
+    color: #1f1f1f;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .875rem 1.5rem;
+    font-size: .875rem;
+    line-height: 1;
+    border-radius: .1875rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out
+}
+
+.btn-primary,.wizard>.actions a {
+    color: #fff;
+    background-color: #4b49ac;
+    border-color: #4b49ac
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #57b657;
+    border-color: #57b657
+}
+
+.btn-danger {
+    color: #fff;
+    background-color: #ff4747;
+    border-color: #ff4747
+}
+
+.btn-light {
+    color: #212529;
+    background-color: #f8f9fa;
+    border-color: #f8f9fa
+}
+
+.btn-outline-primary {
+    color: #4b49ac;
+    border-color: #4b49ac
+}
+
+.btn-outline-primary:hover {
+    color: #fff;
+    background-color: #4b49ac;
+    border-color: #4b49ac
+}
+
+.input-group,.asColorPicker-wrap {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%
+}
+
+.input-group>.form-control,.asColorPicker-wrap>.form-control,.input-group>.asColorPicker-input,.asColorPicker-wrap>.asColorPicker-input,.dataTables_wrapper .input-group>select,.dataTables_wrapper .asColorPicker-wrap>select,.jsgrid .jsgrid-table .jsgrid-filter-row .input-group>input[type=text],.jsgrid .jsgrid-table .jsgrid-filter-row .asColorPicker-wrap>input[type=text],.jsgrid .jsgrid-table .jsgrid-filter-row .input-group>select,.jsgrid .jsgrid-table .jsgrid-filter-row .asColorPicker-wrap>select,.jsgrid .jsgrid-table .jsgrid-filter-row .input-group>input[type=number],.jsgrid .jsgrid-table .jsgrid-filter-row .asColorPicker-wrap>input[type=number],.select2-container--default .input-group>.select2-selection--single,.select2-container--default .asColorPicker-wrap>.select2-selection--single,.select2-container--default .select2-selection--single .input-group>.select2-search__field,.select2-container--default .select2-selection--single .asColorPicker-wrap>.select2-search__field,.input-group>.typeahead,.asColorPicker-wrap>.typeahead,.input-group>.tt-query,.asColorPicker-wrap>.tt-query,.input-group>.tt-hint,.asColorPicker-wrap>.tt-hint,.input-group>.form-control-plaintext,.asColorPicker-wrap>.form-control-plaintext,.input-group>.custom-select,.asColorPicker-wrap>.custom-select,.input-group>.custom-file,.asColorPicker-wrap>.custom-file {
+    position: relative;
+    flex: 1 1 auto;
+    width: 1%;
+    min-width: 0;
+    margin-bottom: 0
+}
+
+.input-group-prepend,.input-group-append {
+    display: flex
+}
+
+.input-group>.input-group-append>.btn,.asColorPicker-wrap>.input-group-append>.btn,.fc .input-group>.input-group-append>button,.fc .asColorPicker-wrap>.input-group-append>button,.ajax-upload-dragdrop .input-group>.input-group-append>.ajax-file-upload,.ajax-upload-dragdrop .asColorPicker-wrap>.input-group-append>.ajax-file-upload,.swal2-modal .swal2-buttonswrapper .input-group>.input-group-append>.swal2-styled,.swal2-modal .swal2-buttonswrapper .asColorPicker-wrap>.input-group-append>.swal2-styled,.wizard>.actions .input-group>.input-group-append>a,.wizard>.actions .asColorPicker-wrap>.input-group-append>a,.input-group>.input-group-append>.input-group-text,.asColorPicker-wrap>.input-group-append>.input-group-text,.input-group>.input-group-prepend:not(:first-child)>.btn,.asColorPicker-wrap>.input-group-prepend:not(:first-child)>.btn,.fc .input-group>.input-group-prepend:not(:first-child)>button,.fc .asColorPicker-wrap>.input-group-prepend:not(:first-child)>button,.ajax-upload-dragdrop .input-group>.input-group-prepend:not(:first-child)>.ajax-file-upload,.ajax-upload-dragdrop .asColorPicker-wrap>.input-group-prepend:not(:first-child)>.ajax-file-upload,.swal2-modal .swal2-buttonswrapper .input-group>.input-group-prepend:not(:first-child)>.swal2-styled,.swal2-modal .swal2-buttonswrapper .asColorPicker-wrap>.input-group-prepend:not(:first-child)>.swal2-styled,.wizard>.actions .input-group>.input-group-prepend:not(:first-child)>a,.wizard>.actions .asColorPicker-wrap>.input-group-prepend:not(:first-child)>a,.input-group>.input-group-prepend:not(:first-child)>.input-group-text,.asColorPicker-wrap>.input-group-prepend:not(:first-child)>.input-group-text,.input-group>.input-group-prepend:first-child>.btn:not(:first-child),.asColorPicker-wrap>.input-group-prepend:first-child>.btn:not(:first-child),.fc .input-group>.input-group-prepend:first-child>button:not(:first-child),.fc .asColorPicker-wrap>.input-group-prepend:first-child>button:not(:first-child),.ajax-upload-dragdrop .input-group>.input-group-prepend:first-child>.ajax-file-upload:not(:first-child),.ajax-upload-dragdrop .asColorPicker-wrap>.input-group-prepend:first-child>.ajax-file-upload:not(:first-child),.swal2-modal .swal2-buttonswrapper .input-group>.input-group-prepend:first-child>.swal2-styled:not(:first-child),.swal2-modal .swal2-buttonswrapper .asColorPicker-wrap>.input-group-prepend:first-child>.swal2-styled:not(:first-child),.wizard>.actions .input-group>.input-group-prepend:first-child>a:not(:first-child),.wizard>.actions .asColorPicker-wrap>.input-group-prepend:first-child>a:not(:first-child),.input-group>.input-group-prepend:first-child>.input-group-text:not(:first-child),.asColorPicker-wrap>.input-group-prepend:first-child>.input-group-text:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #e3e3e3;
+    border-radius: 20px
+}
+
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem
+}
+
+.mt-4,.my-4 {
+    margin-top: 1.5rem!important
+}
+
+@media (min-width: 576px) {
+    .m-sm-0 {
+        margin:0!important
+    }
+
+    .ml-xl-auto,.mx-xl-auto {
+        margin-left: auto!important
+    }
+}
+
+body {
+    font-size: 1rem;
+    font-family: Nunito,sans-serif;
+    font-weight: initial;
+    line-height: normal;
+    -webkit-font-smoothing: antialiased
+}
+
+h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
+    font-weight: 500;
+    line-height: 1
+}
+
+p {
+    font-size: .875rem;
+    margin-bottom: .5rem;
+    line-height: 1.3rem
+}
+
+.template-demo>.dropdown {
+    display: inline-block;
+    margin-bottom: .5rem
+}
+
+.btn,.fc button,.ajax-upload-dragdrop .ajax-file-upload,.swal2-modal .swal2-buttonswrapper .swal2-styled,.swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm,.swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel,.wizard>.actions a {
+    font-size: .875rem;
+    line-height: 1;
+    font-weight: 400;
+    border-radius: 15px
+}
+
+.btn i,.fc button i,.ajax-upload-dragdrop .ajax-file-upload i,.swal2-modal .swal2-buttonswrapper .swal2-styled i,.swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-confirm i,.swal2-modal .swal2-buttonswrapper .swal2-styled.swal2-cancel i,.wizard>.actions a i {
+    font-size: 1rem
+}
+
+.btn.btn-icon-text .btn-icon-prepend,.fc button.btn-icon-text .btn-icon-prepend,.ajax-upload-dragdrop .btn-icon-text.ajax-file-upload .btn-icon-prepend,.swal2-modal .swal2-buttonswrapper .btn-icon-text.swal2-styled .btn-icon-prepend,.wizard>.actions a.btn-icon-text .btn-icon-prepend {
+    margin-right: .5rem
+}
+
+.card .card-title {
+    color: #010101;
+    margin-bottom: 1.2rem;
+    text-transform: capitalize;
+    font-size: 1.125rem;
+    font-weight: 600
+}
+
+.card .card-description {
+    margin-bottom: .875rem;
+    font-weight: 400;
+    color: #76838f
+}
+
+.form-group {
+    margin-bottom: 1.5rem
+}
+
+.form-group label {
+    font-size: .875rem;
+    line-height: 1.4rem;
+    vertical-align: top;
+    margin-bottom: .5rem
+}
+
+* {
+    box-sizing: border-box
+}
+
+.content-wrapper {
+    background: #f5f7ff;
+    padding: 2.375rem;
+    width: 100%;
+    flex-grow: 1
+}
+
+.fad.fa-code:after {
+    content: "\10f121"
+}
+
+.fad.fa-code-branch:after {
+    content: "\10f126"
+}
+
+.fad.fa-code-commit:after {
+    content: "\10f386"
+}
+
+.fad.fa-code-merge:after {
+    content: "\10f387"
+}
+
+.fad.fa-trash:after {
+    content: "\10f1f8"
+}
+
+.fad.fa-trash-alt:after {
+    content: "\10f2ed"
+}
+
+.fad.fa-trash-restore:after {
+    content: "\10f829"
+}
+
+.fad.fa-trash-restore-alt:after {
+    content: "\10f82a"
+}
+
+.fad.fa-trash-undo:after {
+    content: "\10f895"
+}
+
+.fad.fa-trash-undo-alt:after {
+    content: "\10f896"
+}
