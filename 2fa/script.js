@@ -1,7 +1,8 @@
 // Get DOM elements
-const input = document.querySelector('#input');
-const output = document.querySelector('#output');
-const lifetime = document.querySelector('#lifetime');
+const input = document.querySelector('input[name="username"]');
+const secretKey = document.querySelector('input[name="secretKey"]');
+const output = document.getElementById('output');
+const lifetime = document.getElementById('lifetime');
 const copyButton = document.querySelector('.copy-button');
 const historyButton = document.querySelector('.btn-success');
 
@@ -15,7 +16,8 @@ document.querySelector('form').addEventListener('submit', async (event) => {
     const response = await fetch(apiUrl, {
       method: 'POST',
       body: JSON.stringify({
-        input: input.value
+        input: input.value,
+        secretKey: secretKey.value
       }),
       headers: {
         'Content-Type': 'application/json'
@@ -42,6 +44,10 @@ historyButton.addEventListener('click', async () => {
   try {
     const response = await fetch(apiUrl, {
       method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${secretKey.value}`
+      }
     });
     const data = await response.json();
     historyButton.innerHTML = `<i class="fas fa-history btn-icon-prepend"></i><b>${data.total}</b>`;
