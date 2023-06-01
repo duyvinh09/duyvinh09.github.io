@@ -154,7 +154,7 @@ const we = {
     })], -1),
     Pe = d("div", {
         class: "text-center text-gray-500 px-12"
-    }, "Operated and Developed by DuckNha", -1),
+    }, "Operated and Developed by Dinh Duy Vinh", -1),
     He = [Be, Pe],
     De = {
         __name: "Dialogs",
@@ -374,7 +374,7 @@ const we = {
                     const f = t[t.length - 1];
                     switch (u.status) {
                         case 401: {
-                            f.message = "Lỗi api liên hệ: Nguyễn Hồng Anh Đức";
+                            f.message = "Lỗi api liên hệ: Đinh Duy Vinh";
                             break
                         }
                         case 403: {
@@ -912,14 +912,14 @@ if ({}.VITE_GUARD) {
                 r = C(e[n(288, ")rnF")]);
             !a[n(252, "Tkse")](e[n(302, "WyIa")](r, e.fpdiz)) || !o[n(245, "LNFh")](e[n(210, "o8qs")](r, e[n(262, "60&M")])) ? e[n(231, "0@rx")](r, "0") : e[n(230, "IJT$")](C)
         })()
-    }(), console[Q(274, "H7j^")]("Author: Nguyễn Hồng Anh Đức");
-    var E = "Nguyễn Hồng Anh Đức"
+    }(), console[Q(274, "H7j^")]("Author: Đinh Duy Vinh");
+    var E = "Đinh Duy Vinh"
 }
 const Z = be(pt);
 Z.config.globalProperties.$window = window;
 Z.use(ye).mount("#app");
-var my_api_key = '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';
+var my_api_key = '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';
 var rate_limit = 2;
 var show_ads = true;
-var promot_link = 'https://www.facebook.com/duck.nha';
-var promot_text = 'Nguyễn Hồng Anh Đức';
+var promot_link = 'https://www.facebook.com/duyvinh09';
+var promot_text = 'Đinh Duy Vinh';
