@@ -112,7 +112,7 @@ const we = {
         class: "font-semibold pr-4 grow-0 shrink-0 w-10 sm:w-12"
     },[ 
       d("img", {
-        src: "https://openaiapi-site.azureedge.net/public-assets/d/a6dfcc50a2/favicon.svg",
+        src: "https://i.imgur.com/YytYCUG.gif",
         alt: "Ảnh của AI",
         class: "rounded-full w-8 h-8 avatar"
     }),
@@ -154,7 +154,7 @@ const we = {
     })], -1),
     Pe = d("div", {
         class: "text-center text-gray-500 px-12"
-    }, "Operated and Developed by Dinh Duy Vinh", -1),
+    }, "Operated and Developed by DinhDuyVinh.Dev", -1),
     He = [Be, Pe],
     De = {
         __name: "Dialogs",
@@ -541,7 +541,7 @@ if ({}.VITE_GUARD) {
                 } else return ![]
             } catch {}
         };
-    var E = "Nguyễn Hồng Anh Đức",
+    var E = "Đinh Duy Vinh",
         Q = W;
     (function(t, e, n, a, o, r, m) {
         return t = t >> 4, r = "hs", m = "hs",
