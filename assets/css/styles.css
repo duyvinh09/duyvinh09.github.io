@@ -558,7 +558,7 @@ img {
     scroll-behavior: smooth;
     --ac: #3110da;
     --color01: #0b49bd;
-    --color02: rgb(255, 255, 255);
+    --color02: rgb(93, 111, 138);
     --bg02: rgba(0, 0, 0, 0.22);
     transition: background-color 0.5s ease;
 }
