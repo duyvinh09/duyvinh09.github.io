@@ -559,7 +559,6 @@ img {
     --ac: #634ecf;
     --color01: #2c2c2c;
     --color02: #000000;
-    --bg01: #ffffff;
     --bg02: rgba(0, 0, 0, 0.22);
     transition: background-color 0.5s ease;
 }
