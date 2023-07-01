@@ -80,7 +80,6 @@
       <input  class="box" type="file" id="file"  >
       <div style="font-size: 2rem;  margin-top: 1rem; color:var(--light-color);" ><h5>Link ảnh ở dây:  
       <h1 id="url"  class="btn" style="height: 4.5rem; text-transform:none ;" ></h1>
-      <button id="copy-btn" class="btn btn-primary" type="button" style="text-transform: none;">Copy link ảnh</button>
    </div>
    <section class="playlist-details">
       <h1 class="heading">Ảnh Demo</h1>
@@ -103,23 +102,6 @@
         </form> 
     </div>
 </section>
-<script>
-   const copyBtn = document.getElementById("copy-btn");
-   const url = document.getElementById("url");
-
-   copyBtn.addEventListener("click", () => {
-      copyTextToClipboard(url.innerText);
-   });
-
-   function copyTextToClipboard(text) {
-      const tempInput = document.createElement("input");
-      tempInput.value = text;
-      document.body.appendChild(tempInput);
-      tempInput.select();
-      document.execCommand("copy");
-      document.body.removeChild(tempInput);
-   }
-</script>
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7280391568439473"crossorigin="anonymous"></script>
 <ins class="adsbygoogle"
      style="display:block; text-align:center;"
