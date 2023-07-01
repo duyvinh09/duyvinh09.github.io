@@ -634,7 +634,10 @@ img {
     font-weight: 500;
 }
 
-
+.button i {
+  font-size: 1.25rem;
+  display: flex;
+}
 
 
 .profile__buttons,
@@ -653,7 +656,12 @@ img {
     column-gap: 0.25rem;
 }
 
-
+.button__gray {
+  background-color: #e9ebec;
+  color: #2c2c2c !important;
+  border-radius: 50px;
+  transition: background-color 0.5s ease;
+}
 
 .button__gray:hover {
     color: #6563ff !important;
@@ -708,12 +716,12 @@ img {
 }
 
 .nav__link {
-    display: flex;
-    color: #ffffff;
-    font-size: 1.25rem;
-    padding: 0.6rem;
-    border-radius: 5rem;
-    transition: background-color 0.5s ease;
+  display: flex;
+  color: #556ae2;
+  font-size: 1.25rem;
+  padding: 0.6rem;
+  border-radius: 5rem;
+  transition: background-color 0.5s ease;
 }
 
 .nav__link i {
@@ -968,6 +976,18 @@ textarea:focus {
     border: 1px solid #6563ff;
     color: var(--color01);
     outline: none !important;
+}
+
+form textarea {
+  color: var(--color01);
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 40px;
+  background: transparent;
+  border: 1px solid var(--color02);
+  padding: 15px 20px;
 }
 
 
