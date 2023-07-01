@@ -556,9 +556,9 @@ img {
 
 :root {
     scroll-behavior: smooth;
-    --ac: #634ecf;
-    --color01: #2c2c2c;
-    --color02: #000000;
+    --ac: #3110da;
+    --color01: #0b49bd;
+    --color02: rgb(255, 255, 255);
     --bg02: rgba(0, 0, 0, 0.22);
     transition: background-color 0.5s ease;
 }
@@ -584,7 +584,7 @@ svg {
 }
 
 .profile__data:hover svg {
-    filter: drop-shadow(1px 1px 1px #6563ff);
+    filter: drop-shadow(1px 1px 1px #0099FF);
     animation: AC 1s linear infinite;
     transition: background-color 0.5s ease;
 }
@@ -624,7 +624,7 @@ img {
     display: inline-flex;
     align-items: center;
     column-gap: 0.5rem;
-    background-color: #6563ff;
+    background-color: #0099FF;
     color: #FFF !important;
     border-radius: 1rem;
     transition: .3s;
@@ -658,13 +658,13 @@ img {
 
 .button__gray {
   background-color: #e9ebec;
-  color: #2c2c2c !important;
+  color: #0099FF !important;
   border-radius: 50px;
   transition: background-color 0.5s ease;
 }
 
 .button__gray:hover {
-    color: #6563ff !important;
+    color: #0099FF !important;
     transition: background-color 0.5s ease;
 }
 
@@ -702,16 +702,16 @@ img {
 }
 
 .active-link {
-    background-color: #6563ff;
+    background-color: #0099FF;
     color: #FFF !important;
     ;
-    filter: drop-shadow(1px 3px 4px #6563ff);
+    filter: drop-shadow(1px 3px 4px #0099FF);
     transition: background-color 0.5s ease;
 }
 
 .nav__item a:hover {
     color: #FFF !important;
-    background-color: #6563ff;
+    background-color: #0099FF;
     transition: background-color 0.5s ease;
 }
 
@@ -835,7 +835,7 @@ img {
 
 .skills__data i {
     font-size: 1rem;
-    color: #6563ff;
+    color: #0099FF;
 }
 
 .skills__name {
@@ -874,7 +874,7 @@ img {
     width: 120px;
     margin: 0 auto;
     width: 128px;
-    background: #6563ff;
+    background: #0099FF;
     height: 4px;
     border-radius: 0px 0px 10px 10px
 }
@@ -892,7 +892,7 @@ img {
     width: 120px;
     margin: 0 auto;
     width: 28px;
-    background: #6563ff;
+    background: #0099FF;
     height: 5px;
     border-radius: 0px 0px 10px 10px
 }
@@ -930,7 +930,7 @@ img {
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 2px;
-    color: #6563ff !important;
+    color: #0099FF !important;
     background: transparent;
     transition: 0.4s ease-in-out;
 }
@@ -973,7 +973,7 @@ form input {
 
 input:focus,
 textarea:focus {
-    border: 1px solid #6563ff;
+    border: 1px solid #0099FF;
     color: var(--color01);
     outline: none !important;
 }
