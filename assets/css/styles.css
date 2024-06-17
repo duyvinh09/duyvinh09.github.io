@@ -334,6 +334,7 @@ body.dark-theme {
   position: relative;
   border-radius: 1rem;
   overflow: hidden;
+  bottom: -99px;
 }
 
 .projects__card img {
