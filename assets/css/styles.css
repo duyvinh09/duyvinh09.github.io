@@ -149,6 +149,12 @@ body.dark-theme {
   background-color: rgba(255, 255, 255, 0.12);
 }
 
+.dark-theme .skills__area,
+.dark-theme .service__box,
+.dark-theme .contact__box {
+  box-shadow: 1px 1px 10px 2px rgba(255, 255, 255, 0.12);
+}
+
 .dark-theme::-webkit-scrollbar {
   background-color: hsl(var(--hue), 8%, 16%);
 }
@@ -350,7 +356,7 @@ body.dark-theme {
 
 /*=============== PROJECTS ===============*/
 .duyvinh-note {
-  margin-top: 1.5rem;
+  margin-top: 2rem;
 }
 
 .projects__card {
@@ -580,9 +586,9 @@ body.dark-theme {
   .profile__info-description {
     font-size: var(--small-font-size);
   }
-  .profile__buttons {
+  /* .profile__buttons {
     column-gap: 2rem;
-  }
+  } */
 
   .projects__content {
     gap: 2rem 3rem;
@@ -760,7 +766,7 @@ body.dark-theme {
 .contact__box {
   width: 100%;
   height: 100%;
-  background: var(--body-color);
+  background: var(--container-color);
   padding: 2.3rem;
   transition: 0.3s;
   border-radius: 1rem;
@@ -881,7 +887,7 @@ form textarea {
   .skills__content,
   .services__box_area {
     grid-template-columns: repeat(2, 380px) !important;
-    align-items: center;
+    /* align-items: center; */
     justify-content: center;
   }
 
