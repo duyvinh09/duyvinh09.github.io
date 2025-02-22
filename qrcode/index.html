@@ -95,7 +95,7 @@
             </div>
             <div class="p-6">
                 <div class="flex justify-center p-4">
-                    <img id="qrcodeImg" src="https://i.imgur.com/U7afLiO.png" alt="QR Code" width="200">
+                    <img id="qrcodeImg" class="w-48 h-48 mx-auto" src="https://i.imgur.com/U7afLiO.png" alt="QR Code" width="200">
                 </div>
             </div>
         </div>
@@ -125,15 +125,25 @@
         }
         
         function downloadQR() {
-            let qrcodeImg = document.getElementById('qrcodeImg');
-            if (qrcodeImg.src.includes('api.qrserver.com')) {
-                let downloadLink = document.createElement('a');
-                downloadLink.href = qrcodeImg.src;
-                downloadLink.download = 'qrcode.png';
-                document.body.appendChild(downloadLink);
-                downloadLink.click();
-                document.body.removeChild(downloadLink);
+            const qrcodeImg = document.querySelector('#qrcodeImg');
+            const defaultImgSrc = 'https://i.imgur.com/U7afLiO.png';
+            if (!qrcodeImg || !qrcodeImg.src || qrcodeImg.src === defaultImgSrc) {
+                alert('Không tìm thấy ảnh QR Code. Vui lòng tạo ảnh trước!');
+                return;
             }
+            fetch(qrcodeImg.src)
+                .then(response => response.blob())
+                .then(blob => {
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'qrcode.png';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                })
+                .catch(error => console.error('Lỗi tải ảnh:', error));
         }
     </script>
 </body>
