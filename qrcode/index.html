@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Công cụ tạo mã QR code nhanh chóng">
+    <meta name="keywords" content="website, qr code, tạo mã QR code, công cụ">
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Công cụ tạo mã QR code nhanh chóng" />
+    <meta property="og:image" content="https://i.imgur.com/rUldJC2.jpg" />
+    <title>Tạo Mã QR từ Tin Nhắn</title>
+    <link rel="shortcut icon" href="https://i.imgur.com/83Gs09S.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f0f0;
+        }
+
+        .bg-card {
+            background-color: #ffffff;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        button {
+            cursor: pointer;
+            border-radius: 8px;
+        }
+        
+        .bg-primary {
+            background-color: #3B82F6;
+        }
+        
+        .text-primary-foreground {
+            color: #ffffff;
+        }
+        
+        .bg-primary:hover {
+            background-color: #254ab1;
+        } 
+    </style>
+</head>
+<body>
+    <div class="container mx-auto px-4 md:px-8 lg:px-16 py-8">
+        <div class="rounded-lg border bg-card text-card-foreground shadow-sm mx-auto max-w-2xl" data-v0-t="card">
+            <div class="flex flex-col p-6 space-y-1">
+                <h3 class="tracking-tight text-2xl font-bold">Tạo Ảnh QR Code</h3>
+                <p class="text-sm text-muted-foreground">Chọn loại QR Code bạn muốn tạo</p>
+            </div>
+            <div class="p-6">
+                <div class="flex border-b">
+                    <button class="tab-button w-1/2 px-4 py-2 text-center border-r bg-gray-100 text-gray-700 hover:bg-gray-200 active-tab" onclick="switchTab('textQR', this)">Văn Bản</button>
+                    <button class="tab-button w-1/2 px-4 py-2 text-center bg-gray-100 text-gray-700 hover:bg-gray-200" onclick="switchTab('wifiQR', this)">WiFi</button>
+                </div>
+
+                <div id="textQR" class="tab-content p-4">
+                    <div class="space-y-4">
+                        <div class="space-y-2">
+                            <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="message">
+                                Văn Bản
+                            </label>
+                            <textarea class="flex h-20 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50" id="message" name="message" placeholder="Nhập văn bản cần tạo QR code" required=""></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="wifiQR" class="tab-content hidden p-4">
+                    <label class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" for="ssid">Tên WiFi</label>
+                    <input id="ssid" type="text" class="w-full p-2 border rounded" placeholder="Nhập tên WiFi">
+                    <label for="password" class="text-sm font-medium mt-2">Mật khẩu</label>
+                    <input id="password" type="text" class="w-full p-2 border rounded" placeholder="Nhập mật khẩu">
+                    <label for="encryption" class="text-sm font-medium mt-2">Loại mã hóa</label>
+                    <select id="encryption" class="w-full p-2 border rounded">
+                        <option value="WPA">WPA/WPA2</option>
+                        <option value="WEP">WEP</option>
+                        <option value="">Không mã hóa</option>
+                    </select>
+                </div>
+
+                <div class="flex space-x-2">
+                    <button class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full" type="submit" name="generateQR" onclick="generateQR()">
+                        <i class="fas fa-qrcode"></i>&nbsp; Tạo QR Code
+                    </button>
+                    <button class="inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full" type="button" onclick="downloadQR()">
+                        <i class="fas fa-download"></i>&nbsp; Tải QR Code
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="rounded-lg border bg-card text-card-foreground shadow-sm mx-auto max-w-2xl mt-8" data-v0-t="card">
+            <div class="flex flex-col p-6 space-y-1">
+                <h3 class="tracking-tight text-2xl font-bold">Ảnh QR Code Của Bạn</h3>
+                <p class="text-sm text-muted-foreground">Mã QR Sẽ Được Xuất Hiện Ở Bên Dưới</p>
+            </div>
+            <div class="p-6">
+                <div class="flex justify-center p-4">
+                    <img id="qrcodeImg" src="https://i.imgur.com/U7afLiO.png" alt="QR Code" width="200">
+                </div>
+            </div>
+        </div>
+        <footer class="mt-6 text-center text-gray-500 text-sm">
+                © 2024 Vận Hành Bởi
+                <a href="https://me.momo.vn/dinhduyvinh">Đinh Duy Vinh</a>
+            </footer>
+    </div>
+
+    <script>
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.add('hidden'));
+            document.getElementById(tabId).classList.remove('hidden');
+        }
+        
+        function generateQR() {
+            let qrText = '';
+            if (!document.getElementById('textQR').classList.contains('hidden')) {
+                qrText = encodeURIComponent(document.getElementById('message').value.trim());
+            } else {
+                let ssid = document.getElementById('ssid').value.trim();
+                let password = document.getElementById('password').value.trim();
+                let encryption = document.getElementById('encryption').value;
+                qrText = encodeURIComponent(`WIFI:T:${encryption};S:${ssid};P:${password};;`);
+            }
+            document.getElementById('qrcodeImg').src = `https://api.qrserver.com/v1/create-qr-code/?size=1000x1000&data=${qrText}`;
+        }
+        
+        function downloadQR() {
+            let qrcodeImg = document.getElementById('qrcodeImg');
+            if (qrcodeImg.src.includes('api.qrserver.com')) {
+                let downloadLink = document.createElement('a');
+                downloadLink.href = qrcodeImg.src;
+                downloadLink.download = 'qrcode.png';
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+            }
+        }
+    </script>
+</body>
+</html>
