@@ -182,7 +182,7 @@ header {
     position: relative;
     z-index: -1;
     object-fit: cover;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 10px var(--box-shadow);
     display: block;
     margin: 0 auto;
 }
