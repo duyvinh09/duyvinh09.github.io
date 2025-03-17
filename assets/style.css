@@ -17,7 +17,7 @@
 
     --color02: #fff;
     --nav-bar: rgba(0, 0, 0, 0.22);
-    --navbar-bg: rgba(255, 255, 255, 0.663);
+    --navbar-bg: rgba(247, 251, 255, 0.663);
     --box-shadow: rgba(116, 116, 116, 0.136);
     transition: background-color 0.5s ease;
 
@@ -47,7 +47,7 @@ body.dark {
     
     --color02: hsl(var(--hue), 24%, 12%);
     --nav-bar: rgba(255, 255, 255, 0.22);
-    --navbar-bg: rgba(20, 20, 20, 0.663);
+    --navbar-bg: rgba(12, 17, 23, 0.663);
     --box-shadow: rgba(255, 255, 255, 0.12);
     transition: background-color 0.5s ease;
 }
@@ -101,7 +101,7 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: var(--body-color);
+    /* background-color: var(--body-color); */
     z-index: 100;
     transition: background-color 0.5s ease;
     box-shadow: 1px 1px 10px 2px var(--box-shadow);
