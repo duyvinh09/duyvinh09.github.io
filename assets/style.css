@@ -17,7 +17,7 @@
 
     --color02: #fff;
     --nav-bar: rgba(0, 0, 0, 0.22);
-    --navbar-bg: rgba(247, 251, 255, 0.663);
+    --navbar-bg: rgba(250, 253, 255, 0.663);
     --box-shadow: rgba(116, 116, 116, 0.136);
     transition: background-color 0.5s ease;
 
@@ -42,12 +42,13 @@
 body.dark {
     --title-color: hsl(var(--hue), 12%, 95%);
     --text-color: hsl(var(--hue), 12%, 75%);
+    --text-color-light: hsl(var(--hue), 8%, 40%); /* tooltip */
     --body-color: hsl(var(--hue), 40%, 8%);
     --container-color: #fff;
     
     --color02: hsl(var(--hue), 24%, 12%);
     --nav-bar: rgba(255, 255, 255, 0.22);
-    --navbar-bg: rgba(12, 17, 23, 0.663);
+    --navbar-bg: rgba(12, 21, 29, 0.663);
     --box-shadow: rgba(255, 255, 255, 0.12);
     transition: background-color 0.5s ease;
 }
@@ -101,10 +102,9 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    /* background-color: var(--body-color); */
     z-index: 100;
     transition: background-color 0.5s ease;
-    box-shadow: 1px 1px 10px 2px var(--box-shadow);
+    /* box-shadow: 1px 1px 10px 2px var(--box-shadow); */
     backdrop-filter: blur(10px) !important;
     background-color: var(--navbar-bg) !important;
 }
@@ -443,11 +443,11 @@ img {
     border-radius: 4rem;
     padding: 0.8rem 2rem;
     backdrop-filter: blur(10px);
-    width: 328px;
+    width: 300px;
     left: 0;
     right: 0;
     margin: 0 auto;
-    transition: background-color 0.5s ease;
+    transition: width 0.4s ease-in-out;
 }
 
 .nav__list {
@@ -463,9 +463,17 @@ img {
 .active-link {
     background-color: var(--first-color);
     color: #FFF !important;
-    ;
     filter: drop-shadow(1px 3px 4px var(--first-color));
-    transition: background-color 0.5s ease;
+    transition: background-color 0.5s ease, transform 0.3s ease, filter 0.3s ease;
+}
+
+.nav__item {
+    position: relative;
+    transition: transform 0.3s ease, width 0.5s cubic-bezier(.16, 1, .3, 1);
+    width: 5em;
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }
 
 .nav__item a:hover {
@@ -474,18 +482,73 @@ img {
     transition: background-color 0.5s ease;
 }
 
+.nav__item:hover {
+    width: 8em;
+    transform: translateY(-10px);
+    z-index: 1;
+}
+
+.nav-item.sibling-close {
+    width: 7em;
+    /* transform: translateY(10px); */
+}
+
+.nav-item.sibling-far {
+    width: 6em;
+    /* transform: translateY(5px); */
+}
+
 .nav__link {
     display: flex;
     color: #ffffff;
     font-size: 1.25rem;
     padding: 0.6rem;
     border-radius: 5rem;
-    transition: background-color 0.5s ease;
+    transition: transform 0.3s ease, background-color 0.5s ease, filter 0.3s ease;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
 }
 
 .nav__link i {
     display: flex;
-    transition: background-color 0.5s ease;
+    transition: transform 0.3s ease;
+}
+
+.nav__item:hover .nav__link {
+    transform: scale(1.2);
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3));
+}
+
+.nav__item:hover .nav__link i {
+    transform: scale(1.2);
+}
+
+.nav__menu:hover {
+    /* transform: translateY(-10px); */
+    width: 330px;
+}
+
+.nav-item__tooltip {
+    position: absolute;
+    background-color: var(--container-color);
+    color: var(--text-color-light);
+    opacity: 0;
+    white-space: nowrap;
+    border-radius: .25em;
+    padding: .4em .5em;
+    font-size: 0.9rem;
+    border-radius: 5px;
+    transition: transform .5s cubic-bezier(.16, 1, .3, 1), opacity .5s cubic-bezier(.16, 1, .3, 1);
+    transform: translate(0, -80%);
+    white-space: nowrap;
+}
+
+.nav__item:hover .nav-item__tooltip {
+    opacity: 1;
+    transform: translate(0px, -140%);
 }
 
 
@@ -681,6 +744,7 @@ img {
 }
 
 .see__more {
+    border: none;
     display: inline-flex;
     align-items: center;
     column-gap: 0.5rem;
@@ -749,10 +813,6 @@ form textarea {
     padding: 15px 20px;
 }
 
-
-
-
-
 .footer__copy {
     display: block;
     margin: 3.5rem 0 8rem;
@@ -780,7 +840,6 @@ form textarea {
     }
 }
 
-
 @media only screen and (min-width: 600px) and (max-width: 992px) {
 
     .projects__content,
@@ -798,7 +857,6 @@ form textarea {
         gap: 2rem;
     }
 }
-
 
 @media only screen and (min-width: 993px) and (max-width: 1920px) {
 
