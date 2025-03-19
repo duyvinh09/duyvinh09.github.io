@@ -863,15 +863,14 @@ form textarea {
     text-align: center;
     font-size: .813rem;
     color: var(--text-color);
-    height: 17vh;
+    height: 170px;
     background-color: var(--first-color);
 }
 
 .waves {
     width: 100%;
-    height: 25vh;
-    margin-bottom: -7px;
-    margin-top: 2.5rem;
+    height: 25px;
+    margin: 3.5rem 0 -7px;
     min-height: 100px;
     max-height: 150px;
 }
