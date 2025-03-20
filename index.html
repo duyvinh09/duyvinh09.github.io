@@ -23,9 +23,25 @@
     <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-brands/css/uicons-brands.css'>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/css/bootstrap.min.css">
 
+    <style>
+        body {
+            display: block; -khtml-user-select: none; -webkit-user-select: none;
+            -moz-user-select: none; -ms-user-select: none; -o-user-select: none;
+            user-select: none; unselectable: on;
+        }
+        
+        html,body {
+            cursor: url("https://1.bp.blogspot.com/-qbWo9mPKO2Y/YL9utYdQBdI/AAAAAAAAFs4/mtjGu6u2uGwtJsT4gZG4lbhLV1a5lG6OQCLcBGAsYHQ/s0/mouse-f1.png"), auto;
+        }
+        
+        a:hover {
+            cursor: url("https://1.bp.blogspot.com/-nYv2dLl3oXY/YL9utYBCh8I/AAAAAAAAFtA/wII4lVw5w4k-4isGMY41heTqk8U4TJujgCLcBGAsYHQ/s0/mouse-f2.png"), auto;
+        }
+    </style>
+
     <link rel="stylesheet" href="./assets/style.css">
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
 </head>
 
 
@@ -482,27 +498,6 @@
         </span>
     </footer>
 
-    <script src="https://unpkg.com/scrollreveal/dist/scrollreveal.min.js"></script>
-    <style>
-        body {
-            display: block;
-            -khtml-user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            -o-user-select: none;
-            user-select: none;
-            unselectable: on;
-        }
-    
-        html,body {
-            cursor: url("https://1.bp.blogspot.com/-qbWo9mPKO2Y/YL9utYdQBdI/AAAAAAAAFs4/mtjGu6u2uGwtJsT4gZG4lbhLV1a5lG6OQCLcBGAsYHQ/s0/mouse-f1.png"), auto;
-        }
-    
-        a:hover {
-            cursor: url("https://1.bp.blogspot.com/-nYv2dLl3oXY/YL9utYBCh8I/AAAAAAAAFtA/wII4lVw5w4k-4isGMY41heTqk8U4TJujgCLcBGAsYHQ/s0/mouse-f2.png"), auto;
-        }
-    </style>
     <script>
         // Get all sections that have an ID defined
         const sections = document.querySelectorAll("section[id]");
@@ -570,35 +565,36 @@
 
         // macOS effect
         document.addEventListener("DOMContentLoaded", () => {
-        // Select all .nav-item elements
-        const navItems = document.querySelectorAll('.nav__item');
-        // Helper function to add/remove a class to a sibling at a given offset
-        const toggleSiblingClass = (items, index, offset, className, add) => {
-            const sibling = items[index + offset];
-            if (sibling) {
-            sibling.classList.toggle(className, add);
-            }
-        };
-        // Event listeners to toggle classes on hover
-        navItems.forEach((item, index) => {
-            item.addEventListener('mouseenter', () => {
-            item.classList.add('hover'); // Add .hover to current item
-            // Toggle classes for siblings
-            toggleSiblingClass(navItems, index, -1, 'sibling-close', true); // Previous sibling
-            toggleSiblingClass(navItems, index, 1, 'sibling-close', true);  // Next sibling
-            toggleSiblingClass(navItems, index, -2, 'sibling-far', true);   // Previous-previous sibling
-            toggleSiblingClass(navItems, index, 2, 'sibling-far', true);    // Next-next sibling
-            });
-            item.addEventListener('mouseleave', () => {
-            item.classList.remove('hover'); // Remove .hover from current item
-            // Toggle classes for siblings
-            toggleSiblingClass(navItems, index, -1, 'sibling-close', false); // Previous sibling
-            toggleSiblingClass(navItems, index, 1, 'sibling-close', false);  // Next sibling
-            toggleSiblingClass(navItems, index, -2, 'sibling-far', false);   // Previous-previous sibling
-            toggleSiblingClass(navItems, index, 2, 'sibling-far', false);    // Next-next sibling
+            // Select all .nav-item elements
+            const navItems = document.querySelectorAll('.nav__item');
+            // Helper function to add/remove a class to a sibling at a given offset
+            const toggleSiblingClass = (items, index, offset, className, add) => {
+                const sibling = items[index + offset];
+                if (sibling) {
+                    sibling.classList.toggle(className, add);
+                }
+            };
+            // Event listeners to toggle classes on hover
+            navItems.forEach((item, index) => {
+                item.addEventListener('mouseenter', () => {
+                    item.classList.add('hover'); // Add .hover to current item
+                    // Toggle classes for siblings
+                    toggleSiblingClass(navItems, index, -1, 'sibling-close', true); // Previous sibling
+                    toggleSiblingClass(navItems, index, 1, 'sibling-close', true);  // Next sibling
+                    toggleSiblingClass(navItems, index, -2, 'sibling-far', true);   // Previous-previous sibling
+                    toggleSiblingClass(navItems, index, 2, 'sibling-far', true);    // Next-next sibling
+                });
+                item.addEventListener('mouseleave', () => {
+                    item.classList.remove('hover'); // Remove .hover from current item
+                    // Toggle classes for siblings
+                    toggleSiblingClass(navItems, index, -1, 'sibling-close', false); // Previous sibling
+                    toggleSiblingClass(navItems, index, 1, 'sibling-close', false);  // Next sibling
+                    toggleSiblingClass(navItems, index, -2, 'sibling-far', false);   // Previous-previous sibling
+                    toggleSiblingClass(navItems, index, 2, 'sibling-far', false);    // Next-next sibling
+                });
             });
         });
-        });
+
 
 
         // animation
@@ -616,8 +612,7 @@
             .profile__info-group,
             .profile__buttons,
             .projects__card,
-            .service__box,
-            .contact__box,
+            .skills__area,
             .note`, { delay: 200, origin: 'bottom' })
 
     </script>
