@@ -73,7 +73,7 @@ a {
 }
 
 ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
     background-color: var(--first-color);
@@ -565,7 +565,7 @@ img {
 #contact {
     padding: 2rem 0 2rem;
     transition: background-color 0.5s ease;
-    height: 80vh;
+    /* height: 80vh; */
 }
 
 
@@ -574,7 +574,6 @@ img {
 #services {
     padding: 2rem 0 2rem;
     transition: background-color 0.5s ease;
-
 }
 
 
@@ -584,7 +583,6 @@ img {
     background: #e1f5fe!important;
     color: #01579b!important;
     font-size: .85rem!important;
-    font-family: var(--fontB)!important;
     line-height: 1.6em!important;
     border-radius: 10px!important;
     overflow: hidden!important;
@@ -864,13 +862,14 @@ form textarea {
     font-size: .813rem;
     color: var(--text-color);
     height: 170px;
+    padding: 2rem 0 2rem;
     background-color: var(--first-color);
 }
 
 .waves {
     width: 100%;
     height: 25px;
-    margin: 3.5rem 0 0;
+    margin: 3.5rem 0 -7px;
     min-height: 100px;
     max-height: 150px;
 }
