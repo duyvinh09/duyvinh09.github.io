@@ -49,7 +49,7 @@ const sr = ScrollReveal({
 });
 sr.reveal(`.profile__border, .profile__name`);
 sr.reveal(`.profile__social, .profile_profession, .profile__info-group, .profile__buttons, .projects__card, 
-.skills__area, .journey__area, .note`, { delay: 200, origin: 'bottom' });
+.skills__area, .resume__area, .note`, { delay: 200, origin: 'bottom' });
 
 
 // Animation counter achiverment
