@@ -989,16 +989,16 @@ form textarea {
     color: var(--text-color);
     height: 150px;
     padding: 1rem 0 .8rem;
-    background-color: var(--first-color);
+    /* background-color: var(--first-color); */
 }
 
 .footer__copy h5 {
     margin-bottom: 0.75rem;
-    color: var(--text-color-lighten);
-    font-weight: 300;
-    font-size: var(--small-font-size);
+    color: var(--title-color);
+    font-weight: 200;
+    font-size: var(--smaller-font-size);
 }
-
+/* 
 .waves {
     width: 100%;
     height: 25px;
@@ -1041,7 +1041,7 @@ form textarea {
     h1 {
         font-size:24px;
     }
-}
+} */
 
 
 /* Shapes */
@@ -1063,17 +1063,22 @@ body.dark .global-shapes {
     display: block;
 }
 
-.home__shape-small,
+.home__shape-small-1,
 .home__shape-big-1,
 .home__shape-big-2 {
     position: absolute;
     border-radius: 50%;
     filter: blur(90px);
+    z-index: -1;
 }
 
-.home__shape-small {
+.home__shape-small-1,
+.home__shape-small-2 {
     width: 150px;
     height: 150px;
+}
+
+.home__shape-small-1 {
     background-color: var(--first-color);
     top: -2.5rem;
     left: -1.5rem;
@@ -1088,18 +1093,18 @@ body.dark .global-shapes {
 .home__shape-big-1 {
     background-color: var(--first-color);
     top: 16rem;
-    right: -6.5rem;
+    right: -8.5rem;
 }
 
 .home__shape-big-2 {
-    background-color: var(--first-color-alt);
-    bottom: -8rem;
-    left: -4rem;
+    background-color: var(--second-color);
+    bottom: -10rem;
+    left: -5rem;
 }
 
 
 
-
+/*=============== BREAKPOINTS ==============*/
 @media only screen and (min-width: 320px) and (max-width: 599px) {
     .profile__buttons {
         /* flex-direction: column; */
@@ -1154,5 +1159,37 @@ body.dark .global-shapes {
     .resume__content,
     .skills__content {
         gap: 3rem;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+
+    .home__shape-small-1,
+    .home__shape-big-1,
+    .home__shape-big-2 {
+        filter: blur(132px);
+    }
+
+    .home__shape-small-1 {
+        width: 300px;
+        height: 300px;
+        top: -5rem;
+        left: -2rem;
+    }
+
+    .home__shape-big-1,
+    .home__shape-big-2 {
+        width: 400px;
+        height: 400px;
+    }
+
+    .home__shape-big-1 {
+        top: 10rem;
+        right: -3.5rem;
+    }
+
+    .home__shape-big-2 {
+        bottom: -14rem;
+        left: 21rem;
     }
 }
