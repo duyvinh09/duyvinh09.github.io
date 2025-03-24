@@ -36,7 +36,7 @@ modeToggle.addEventListener("click", () => {
     modeToggle.classList.toggle("active");
     body.classList.toggle("dark");
     localStorage.setItem("mode", body.classList.contains("dark") ? "dark-mode" : "light-mode");
-});    
+});
 
 
 // ScrollReveal animations
@@ -58,7 +58,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const starsContainer = document.querySelector(".stars");
     const body = document.querySelector("body");
     const bodyHeight = body.scrollHeight;
-
     for (let i = 0; i < numStars; i++) {
         let star = document.createElement("div");
         star.classList.add("star");
@@ -112,3 +111,32 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, { threshold: 0.5 });
 skillsSection && observer.observe(skillsSection);
+
+
+// Scroll animation for shape-small-1
+gsap.registerPlugin(ScrollTrigger);
+const shapeSmall1 = document.querySelector('.home__shape-small-1'); 
+const moveDistance = 80; // Khoảng cách di chuyển (px)
+const moveDuration = 2.5; // Thời gian di chuyển (s)
+let direction = 1; // 1 = trái -> phải, -1 = phải -> trái
+sections.forEach((section, index) => {
+    ScrollTrigger.create({
+        trigger: section,
+        start: "top center",
+        onEnter: () => {
+            direction = index % 2 === 0 ? 1 : -1; // Chẵn (0, 2, 4) -> phải, Lẻ (1, 3, 5) -> trái
+            animateShapeSmall1(direction);
+        },
+        onEnterBack: () => {
+            direction = index % 2 === 0 ? 1 : -1;
+            animateShapeSmall1(direction);
+        }
+    });
+});
+function animateShapeSmall1(dir) {
+    gsap.to(shapeSmall1, {
+        x: dir * moveDistance,
+        duration: moveDuration,
+        ease: "power2.inOut"
+    });
+}
