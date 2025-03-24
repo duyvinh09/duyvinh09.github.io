@@ -1,3 +1,12 @@
+// Preloader
+window.addEventListener("load", () => {
+    setTimeout(() => {
+        document.getElementById("loader").classList.add("hide");
+        document.getElementById("home").style.display = "block";
+    }, 700);
+});
+
+
 // Highlight navigation link on scroll
 const sections = document.querySelectorAll("section[id]");
 window.addEventListener("scroll", () => {
@@ -8,8 +17,8 @@ window.addEventListener("scroll", () => {
         const sectionId = current.getAttribute("id");
         const link = document.querySelector(`.nav__menu a[href*="${sectionId}"]`);
         link?.classList.toggle("active-link", scrollY > sectionTop && scrollY <= sectionTop + sectionHeight);
-    });
-});
+    });    
+});    
 
 
 // Toggle dark/light mode
@@ -22,21 +31,12 @@ if (savedMode === "dark-mode") {
 } else {
     body.classList.remove("dark");
     modeToggle.classList.remove("active");
-}
+}    
 modeToggle.addEventListener("click", () => {
     modeToggle.classList.toggle("active");
     body.classList.toggle("dark");
     localStorage.setItem("mode", body.classList.contains("dark") ? "dark-mode" : "light-mode");
-});
-
-
-// Preloader
-window.addEventListener("load", () => {
-    setTimeout(() => {
-        document.getElementById("loader").classList.add("hide");
-        document.getElementById("home").style.display = "block";
-    }, 700);
-});
+});    
 
 
 // ScrollReveal animations
@@ -49,8 +49,28 @@ const sr = ScrollReveal({
 });
 sr.reveal(`.profile__border, .profile__name`);
 sr.reveal(`.profile__social, .profile_profession, .profile__info-group, .profile__buttons, .projects__card, 
-.skills__area, .resume__area, .note`, { delay: 200, origin: 'bottom' });
+.skills__area, .journey__area, .note`, { delay: 200, origin: 'bottom' });
 
+
+// Background particle effect
+document.addEventListener("DOMContentLoaded", function () {
+    const numStars = 120;
+    const starsContainer = document.querySelector(".stars");
+    const body = document.querySelector("body");
+    const bodyHeight = body.scrollHeight;
+
+    for (let i = 0; i < numStars; i++) {
+        let star = document.createElement("div");
+        star.classList.add("star");
+        star.style.top = `${Math.random() * bodyHeight}px`;
+        star.style.left = `${Math.random() * 98}vw`;
+        let size = Math.random() * 2 + 1;
+        star.style.width = `${size}px`;
+        star.style.height = `${size}px`;
+        star.style.animationDelay = `${Math.random() * 3}s`;
+        starsContainer.appendChild(star);
+    }
+});
 
 // Animation counter achiverment
 const counterElement = document.querySelector('.counter');
