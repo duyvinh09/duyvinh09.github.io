@@ -175,7 +175,7 @@ header {
     width: 100%;
     z-index: 100;
     transition: background-color 0.5s ease;
-    /* box-shadow: 1px 1px 10px 2px var(--box-shadow); */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(10px);
     background-color: transparent;
 }
@@ -209,30 +209,35 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 50%;
     transition: background-color 0.5s ease;
 }
 
-.dark-light svg {
+.dark-light i {
     position: absolute;
+    color: var(--container-color);
+    font-size: 20px;
     cursor: pointer;
     transition: all 0.5s ease;
-    color: var(--first-color);
 }
 
-.dark-light svg:hover {
-    color: var(--first-color);
+.dark-light i:hover {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color02);
+    border-radius: 50%;
+    box-shadow: 1px 1px 10px 2px var(--box-shadow);
 }
 
 .dark-light .moon {
-    transform: rotate(0deg);
     opacity: 1;
+    transform: rotate(0deg);
     transition: transform 0.5s ease, opacity 0.5s ease;
 }
 
 .dark-light .sun {
-    transform: rotate(0deg);
     opacity: 0;
+    transform: rotate(0deg);
     pointer-events: none;
     transition: transform 0.5s ease, opacity 0.5s ease;
 }
@@ -739,7 +744,8 @@ img {
 }
 
 .resume_title,
-.skills_title {
+.skills_title,
+.contact_title {
     font-size: var(--h3-font-size);
     text-align: center;
     margin-bottom: 1.8rem;
@@ -936,7 +942,7 @@ img {
 .resume__step__time {
     display: block;
     font-size: var(--smaller-font-size);
-    color: var(--text-color);
+    color: var(--first-color);
     margin-bottom: 0.5rem;
 }
 
@@ -964,6 +970,20 @@ img {
     background-color: var(--first-color);
 }
 
+
+.map {
+    height: 20rem;
+    margin-bottom: 2rem;
+    padding: .5rem;
+    transition: .3s;
+    position: relative;
+    direction: ltr;
+    overflow: hidden;
+}
+
+.map iframe {
+    border-radius: 1rem;
+}
 
 .see__more {
     border: none;
@@ -1217,18 +1237,51 @@ body.dark .global-shapes {
 
 
 /*=============== BREAKPOINTS ==============*/
+
+/* For mobile */
 @media only screen and (min-width: 320px) and (max-width: 599px) {
+
     .profile__buttons {
         /* flex-direction: column; */
         row-gap: 1rem;
     }
+
     .background-img {
         object-fit: fill;
         width: auto;
         height: 160px;
     }
+
+    .map {
+        height: 15rem;
+        margin-bottom: 1.25rem;
+    }
+
+    .home__shape-small-1 {
+        width: 100px;
+        height: 250px;
+        top: -5rem;
+        left: -2rem;
+    }
+
+    .home__shape-big-1,
+    .home__shape-big-2 {
+        width: 50px;
+        height: 300px;
+    }
+
+    .home__shape-big-1 {
+        top: 10rem;
+        right: -1.5rem;
+    }
+
+    .home__shape-big-2 {
+        bottom: -14rem;
+        left: -1rem;
+    }
 }
 
+/* For tablet */
 @media only screen and (min-width: 600px) and (max-width: 780px) {
 
     .resume__content,
@@ -1257,7 +1310,13 @@ body.dark .global-shapes {
     }
 }
 
+/* For desktop */
 @media only screen and (min-width: 993px) and (max-width: 1920px) {
+
+    .dark-light i:hover {
+        width: 40px;
+        height: 40px;
+    }
 
     .projects__content,
     .resume__content,
@@ -1272,9 +1331,6 @@ body.dark .global-shapes {
     .skills__content {
         gap: 3rem;
     }
-}
-
-@media only screen and (min-width: 1024px) {
 
     .home__shape-small-1,
     .home__shape-big-1,
