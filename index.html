@@ -32,7 +32,7 @@
             cursor: url("https://1.bp.blogspot.com/-qbWo9mPKO2Y/YL9utYdQBdI/AAAAAAAAFs4/mtjGu6u2uGwtJsT4gZG4lbhLV1a5lG6OQCLcBGAsYHQ/s0/mouse-f1.png"), auto;
         }
         
-        a:hover {
+        a:hover, i:hover {
             cursor: url("https://1.bp.blogspot.com/-nYv2dLl3oXY/YL9utYBCh8I/AAAAAAAAFtA/wII4lVw5w4k-4isGMY41heTqk8U4TJujgCLcBGAsYHQ/s0/mouse-f2.png"), auto;
         }
     </style>
@@ -568,6 +568,9 @@
     <!--=============== NAVIGATION BAR ===============-->
     <section class="navbar">
         <div class="nav__menu">
+            <div class="menu-hide-btn">
+                <i class="fa-solid fa-arrow-down-left"></i> 
+            </div>
             <ul class="nav__list">
                 <li class="nav__item">
                     <a href="#home" class="nav__link active-link">
@@ -619,13 +622,16 @@
                 </li>
             </ul>
         </div>
+        <div class="menu-show-btn">
+            <div class="bar-01"></div>
+            <div class="bar-02"></div>
+        </div>
     </section>
 
+    <!--=============== FOOTER ===============-->
     <footer class="footer">
-        <!-- <svg class="waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" /></defs><g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(66, 164, 245,0.7" /><use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(66, 164, 245,0.5)" /><use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(66, 164, 245,0.3)" /><use xlink:href="#gentle-wave" x="48" y="7" fill="rgb(66, 164, 245)" /></g></svg> -->
-        <!-- <svg width="100%" height="100%" id="svg" viewBox="0 0 1440 450" xmlns="http://www.w3.org/2000/svg" class="transition duration-300 ease-in-out delay-150"><defs><linearGradient id="gradient" x1="0%" y1="50%" x2="100%" y2="50%"><stop offset="5%" stop-color="#42a5f5"></stop><stop offset="95%" stop-color="#8ED1FC"></stop></linearGradient></defs><path d="M 0,600 L 0,150 C 103.3205741626794,138.77511961722487 206.6411483253588,127.55023923444975 314,139 C 421.3588516746412,150.44976076555025 532.755980861244,184.57416267942585 612,205 C 691.244019138756,225.42583732057415 738.334928229665,232.15311004784692 822,203 C 905.665071770335,173.84688995215308 1025.9043062200958,108.8133971291866 1135,94 C 1244.0956937799042,79.1866028708134 1342.047846889952,114.5933014354067 1440,150 L 1440,600 L 0,600 Z" stroke="none" stroke-width="0" fill="url(#gradient)" fill-opacity="0.53" class="transition-all duration-300 ease-in-out delay-150 path-0"></path><defs><linearGradient id="gradient" x1="0%" y1="50%" x2="100%" y2="50%"><stop offset="5%" stop-color="#42a5f5"></stop><stop offset="95%" stop-color="#8ED1FC"></stop></linearGradient></defs><path d="M 0,600 L 0,350 C 102.14354066985646,323.46411483253587 204.28708133971293,296.92822966507174 307,308 C 409.7129186602871,319.07177033492826 512.9952153110048,367.7511961722488 604,388 C 695.0047846889952,408.2488038277512 773.7320574162677,400.06698564593296 865,373 C 956.2679425837323,345.93301435406704 1060.0765550239237,299.98086124401914 1158,293 C 1255.9234449760763,286.01913875598086 1347.961722488038,318.00956937799043 1440,350 L 1440,600 L 0,600 Z" stroke="none" stroke-width="0" fill="url(#gradient)" fill-opacity="1" class="transition-all duration-300 ease-in-out delay-150 path-1"></path></svg> -->
         <span class="footer__copy">
-            <br><h5>&#169; 2025 <a href="https://me.momo.vn/dinhduyvinh" rel="nofollow" target="_blank">Đinh Duy Vinh</a>. All rights reserved.</h5>
+            <br><h5>© 2025 <a href="https://me.momo.vn/dinhduyvinh" rel="nofollow" target="_blank">Đinh Duy Vinh</a>. All rights reserved.</h5>
         </span>
     </footer>
 
