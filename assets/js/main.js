@@ -245,62 +245,50 @@ function animateShapeSmall1(dir) {
 
 
 // Language switching functionality
-const languageBtn = document.getElementById('languageBtn');
-const elementsToTranslate = document.querySelectorAll('[data-en], [data-vi]');
-let currentLanguage = localStorage.getItem('language') || 'en';
-function applyLanguage(lang) {
-    if (lang === 'en') {
-        document.body.classList.add('language-en');
-    } else {
-        document.body.classList.remove('language-en');
-    }
-    elementsToTranslate.forEach(element => {
-        if (element.hasAttribute(`data-${lang}`)) {
-            if ((element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') && element.hasAttribute('placeholder')) {
-                element.placeholder = element.getAttribute(`data-${lang}`);
-            } else if (element.classList.contains('button') || element.tagName === 'BUTTON') {
-                const translation = element.getAttribute(`data-${lang}`);
-                const icon = element.querySelector('i')?.outerHTML || '';
-                element.innerHTML = `${translation}${icon}`;
-            } else {
-                const translation = element.getAttribute(`data-${lang}`);
-                const tempDiv = document.createElement('div');
-                tempDiv.innerHTML = translation;
-                // Preserve special elements (<b>, <i>, <a>)
-                const originalElements = {
-                    'b': element.querySelector('b'),
-                    'i': element.querySelector('i'),
-                    'a': element.querySelector('a')
-                };
-                const tempElements = {
-                    'b': tempDiv.querySelector('b'),
-                    'i': tempDiv.querySelector('i'),
-                    'a': tempDiv.querySelector('a')
-                };
-                Object.keys(originalElements).forEach(tag => {
-                    if (originalElements[tag] && tempElements[tag]) {
-                        tempElements[tag].outerHTML = originalElements[tag].outerHTML;
-                    }
-                });
-                element.innerHTML = tempDiv.innerHTML;
+document.addEventListener('DOMContentLoaded', function() {
+    const languageBtn = document.getElementById('languageBtn');
+    const elementsToTranslate = document.querySelectorAll('[data-en], [data-vi]');
+    let currentLanguage = localStorage.getItem('language') || 'en';
+    function applyLanguage(lang) {
+        document.body.classList.remove('language-en', 'language-vi');
+        document.body.classList.add(`language-${lang}`);
+        document.body.style.fontFamily = lang === 'vi' 
+            ? "'Be Vietnam Pro', sans-serif" 
+            : "'Poppins', sans-serif";
+        elementsToTranslate.forEach(element => {
+            if (element.hasAttribute(`data-${lang}`)) {
+                if ((element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') && 
+                    element.hasAttribute('placeholder')) {
+                    element.placeholder = element.getAttribute(`data-${lang}`);
+                } 
+                else if (element.tagName === 'BUTTON' || element.classList.contains('button')) {
+                    const translation = element.getAttribute(`data-${lang}`);
+                    const icon = element.querySelector('i')?.outerHTML || '';
+                    element.innerHTML = `${translation}${icon}`.trim();
+                }
+                else {
+                    const translation = element.getAttribute(`data-${lang}`);
+                    const tempDiv = document.createElement('div');
+                    tempDiv.innerHTML = translation;
+                    ['b', 'i', 'a', 'span', 'strong', 'em'].forEach(tag => {
+                        const original = element.querySelector(tag);
+                        const temp = tempDiv.querySelector(tag);
+                        if (original && temp) {
+                            temp.outerHTML = original.outerHTML;
+                        }
+                    });
+                    
+                    element.innerHTML = tempDiv.innerHTML;
+                }
             }
-        }
+        });
+        languageBtn.classList.toggle('vi', lang === 'vi');
+        localStorage.setItem('language', lang);
+        currentLanguage = lang;
+    }
+    languageBtn.addEventListener('click', function() {
+        const newLanguage = currentLanguage === 'en' ? 'vi' : 'en';
+        applyLanguage(newLanguage);
     });
-    if (lang === 'en') {
-        languageBtn.classList.remove('vi');
-    } else {
-        languageBtn.classList.add('vi');
-    }
-    localStorage.setItem('language', lang);
-    currentLanguage = lang;
-}
-languageBtn.addEventListener('click', () => {
-    const newLanguage = currentLanguage === 'en' ? 'vi' : 'en';
-    applyLanguage(newLanguage);
-});
-document.addEventListener('DOMContentLoaded', () => {
-    if (currentLanguage === 'en') {
-        document.body.classList.add('language-en');
-    }
     applyLanguage(currentLanguage);
 });
