@@ -17,6 +17,7 @@
     --container-color: hsl(var(--hue), 24%, 12%);
 
     --color02: #fff;
+    --color-toolbar: rgba(10, 87, 164, 0.22);
     --nav-bar: rgba(0, 0, 0, 0.22);
     --box-shadow: rgba(116, 116, 116, 0.136);
     transition: background-color 0.5s ease;
@@ -47,6 +48,7 @@ body.dark {
     --container-color: #fff;
     
     --color02: hsl(var(--hue), 24%, 12%);
+    --color-toolbar: rgba(49, 140, 231, 0.22);
     --nav-bar: rgba(255, 255, 255, 0.22);
     --box-shadow: rgba(255, 255, 255, 0.12);
     transition: background-color 0.5s ease;
@@ -174,10 +176,14 @@ header {
     left: 0;
     width: 100%;
     z-index: 100;
-    transition: background-color 0.5s ease;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(10px);
+    transition: background-color 0.5s ease, backdrop-filter 0.5s ease;
     background-color: transparent;
+    border-bottom: none;
+}
+
+header.scrolled {
+    border-bottom: 1px solid var(--box-shadow);
+    backdrop-filter: blur(10px);
 }
 
 .header {
@@ -188,6 +194,56 @@ header {
     padding: 0px 15px;
     transition: background-color 0.5s ease;
 }
+
+.header-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+/* Language Flag Button */
+.language-flag {
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-size: cover;
+    background-position: center;
+    background-image: url('https://flagcdn.com/w40/gb.png');
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-right: 15px;
+}
+
+.language-flag::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('https://flagcdn.com/w40/vn.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.language-flag:hover {
+    transform: scale(1.1);
+    box-shadow: 1px 1px 10px 2px var(--box-shadow);
+}
+
+.language-flag.vi {
+    background-image: none;
+}
+
+.language-flag.vi::before {
+    opacity: 1;
+}
+
 
 .h__logo {
     color: var(--container-color);
@@ -506,7 +562,8 @@ img {
 .nav__menu {
     position: fixed;
     bottom: 1.5rem;
-    background-color: var(--nav-bar);
+    background: linear-gradient(var(--color-toolbar), var(--nav-bar)), var(--color-toolbar);
+    background-blend-mode: multiply; /* multiply, overlay, screen, darken, lighten... */
     border-radius: 4rem;
     padding: 0.8rem 0.8rem;
     backdrop-filter: blur(10px);
@@ -668,7 +725,8 @@ img {
 
 .menu-show-btn {
     position: fixed;
-    background-color: var(--nav-bar);
+    background: linear-gradient(var(--color-toolbar), var(--nav-bar)), var(--color-toolbar);
+    background-blend-mode: multiply;
     backdrop-filter: blur(10px);
     width: 85px;
     height: 40px;
@@ -1001,6 +1059,10 @@ img {
     text-align: justify;
 }
 
+.language-en .about__box p {
+    text-align: left;
+}
+
 
 .resume__step {
     display: flex;
@@ -1045,7 +1107,6 @@ img {
 }
 
 .resume__step__description {
-    text-align: justify;
     font-size: var(--small-font-size);
     color: var(--text-color-light);
     line-height: 1.5;
