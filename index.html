@@ -55,9 +55,12 @@
             <div class="container">
                 <div class="header">
                     <a href="https://dinhduyvinh.me/" class="h__logo"><i class="fa-solid fa-signature"></i> <b>DUY VINH</b></a>
-                    <div class="dark-light">
-                        <i class="fa-solid fa-moon moon"></i>
-                        <i class="fa-solid fa-sun-bright sun"></i>
+                    <div class="header-controls">
+                        <div class="language-flag" id="languageBtn"></div>
+                        <div class="dark-light">
+                            <i class="fa-solid fa-moon moon"></i>
+                            <i class="fa-solid fa-sun-bright sun"></i>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -95,7 +98,7 @@
                                 <path fill-rule="evenodd" d="M8.603 3.799A4.49 4.49 0 0112 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 013.498 1.307 4.491 4.491 0 011.307 3.497A4.49 4.49 0 0121.75 12a4.49 4.49 0 01-1.549 3.397 4.491 4.491 0 01-1.307 3.497 4.491 4.491 0 01-3.497 1.307A4.49 4.49 0 0112 21.75a4.49 4.49 0 01-3.397-1.549 4.49 4.49 0 01-3.498-1.306 4.491 4.491 0 01-1.307-3.498A4.49 4.49 0 012.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 011.307-3.497 4.49 4.49 0 013.497-1.307zm7.007 6.387a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd"/>
                             </svg>
                         </h2>
-                        <h3 class="profile_profession">I am a guy passionate about software creativity.</h3>
+                        <h3 class="profile_profession" data-en="I am a guy with a passion for programming." data-vi="Tớ là một chàng trai có niềm đam mê về lập trình.">I am a guy with a passion for programming.</h3>
 
                         <ul class="profile__social">
                             <a href="https://www.facebook.com/100015359342786" class="profile__social_link">
@@ -113,26 +116,26 @@
                     <div class="profile__info grid">
                         <div class="profile__info-group">
                             <h3 class="profile__info_number">+<span class="counter">0</span> <i class="fa-solid fa-medal"></i></h3>
-                            <p class="profile__info-description">
+                            <p class="profile__info-description" data-en="Achievement" data-vi="Thành tựu">
                                 Achievement
                             </p>
                         </div>
                         <div class="profile__info-group">
                             <h3 class="profile__info_number">2005</h3>
-                            <p class="profile__info-description">
+                            <p class="profile__info-description" data-en="Year of Birth" data-vi="Năm sinh">
                                 Year of Birth
                             </p>
                         </div>
                         <div class="profile__info-group">
                             <h3 class="profile__info_number">Quảng Ngãi</h3>
-                            <p class="profile__info-description">
+                            <p class="profile__info-description" data-en="Location" data-vi="Địa chỉ">
                                 Location
                             </p>
                         </div>
                     </div>
 
                     <div class="profile__buttons">
-                        <a href="https://dinhduyvinh.eu.org/" class="button">
+                        <a href="https://dinhduyvinh.eu.org/" class="button" data-en="Contact Me" data-vi="Liên Hệ Tớ">
                             Contact Me<i class="fi fi-sr-phone-call"></i>
                         </a>
                         <div class="profile__buttons-small">
@@ -156,17 +159,22 @@
             <div class="container">
 
                 <div class="project__content">
-                    <h2 class="project__title">My Project</h2>
+                    <h2 class="project__title" data-en="My Project" data-vi="Dự Án Của Tớ">My Project</h2>
                 </div>
 
                 <div class="projects__content grid">
-                    <p class="note"><b>Lưu ý:</b> Bấm vào ảnh, sau đó nhấn vào icon để chuyển hướng đến project!</p>
+                    <p class="note">
+                        <b data-en="Note:" data-vi="Lưu ý:">Note:</b> 
+                        <span data-en="Click on the image, then click on the icon to be redirected to the project!" data-vi="Bấm vào ảnh, sau đó nhấn vào icon để chuyển hướng đến project!">
+                            Click on the image, then click on the icon to be redirected to the project!
+                        </span>
+                    </p>
                     <article class="projects__card">
                         <img src="./assets/image/infomation.jpg" class="projects__img">
                         <div class="projects__modal">
                             <div>
-                                <span class="projects__subtitle">MY INFORMATION</span>
-                                <h3 class="projects__title">ĐINH DUY VINH</h3>
+                                <span class="projects__subtitle" data-en="MY INFORMATION" data-vi="Thông tin của tớ">MY INFORMATION</span>
+                                <h3 class="projects__title" data-en="DINH DUY VINH" data-vi="ĐINH DUY VINH">ĐINH DUY VINH</h3>
                                 <a href="https://dinhduyvinh.eu.org/" class="projects__button button button_small">
                                     <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                 </a>
@@ -177,8 +185,8 @@
                         <img src="./assets/image/imgur.jpg" class="projects__img">
                         <div class="projects__modal">
                             <div>
-                                <span class="projects__subtitle">Web Tiện Ích</span>
-                                <h3 class="projects__title">Lấy Link ảnh Online</h3>
+                                <span class="projects__subtitle" data-en="Utility Website" data-vi="Web Tiện Ích">Utility Website</span>
+                                <h3 class="projects__title" data-en="Get Image Link Online" data-vi="Lấy Link ảnh Online">Get Image Link Online</h3>
                                 <a href="https://upanh.vercel.app/" class="projects__button button button_small">
                                     <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                 </a>
@@ -189,8 +197,8 @@
                         <img src="./assets/image/crushh.png" class="projects__img">
                         <div class="projects__modal">
                             <div>
-                                <span class="projects__subtitle">Tớ Có Đôi Lời Muối Gửi Đến Cậu</span>
-                                <h3 class="projects__title">Ấn Vào Xem Đi</h3>
+                                <span class="projects__subtitle" data-en="I Have a Few Words to Send to You" data-vi="Tớ Có Đôi Lời Muốn Gửi Đến Cậu">I Have a Few Words to Send to You</span>
+                                <h3 class="projects__title" data-en="Click to See!" data-vi="Ấn Vào Xem Đi!">Click to See!</h3>
                                 <a href="crush" class="projects__button button button_small">
                                     <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                 </a>
@@ -201,8 +209,8 @@
                         <img src="./assets/image/weather.png" class="projects__img">
                         <div class="projects__modal">
                             <div>
-                                <span class="projects__subtitle">Tiện Ích</span>
-                                <h3 class="projects__title">Dự Báo Thời Tiết</h3>
+                                <span class="projects__subtitle" data-en="Utility" data-vi="Tiện Ích">Utility</span>
+                                <h3 class="projects__title" data-en="Weather Forecast" data-vi="Dự Báo Thời Tiết">Weather Forecast</h3>
                                 <a href="thoitiet" class="projects__button button button_small">
                                     <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                 </a>
@@ -213,8 +221,8 @@
                         <img src="./assets/image/baomoi24h.png" class="projects__img">
                         <div class="projects__modal">
                             <div>
-                                <span class="projects__subtitle">Web</span>
-                                <h3 class="projects__title">Báo Mới 24H</h3>
+                                <span class="projects__subtitle" data-en="Website" data-vi="Web">Website</span>
+                                <h3 class="projects__title" data-en="Latest News 24H" data-vi="Báo Mới 24H">Latest News 24H</h3>
                                 <a href="https://www.baomoi24h.eu.org/" class="projects__button button button_small">
                                     <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                 </a>
@@ -225,8 +233,8 @@
                         <img src="./assets/image/game.png" class="projects__img">
                         <div class="projects__modal">
                             <div>
-                                <span class="projects__subtitle">Web Game</span>
-                                <h3 class="projects__title">Game giải trí</h3>
+                                <span class="projects__subtitle" data-en="Web Game" data-vi="Web Game">Web Game</span>
+                                <h3 class="projects__title" data-en="Entertainment Game" data-vi="Game giải trí">Entertainment Game</h3>
                                 <a href="game" class="projects__button button button_small">
                                     <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                 </a>
@@ -237,8 +245,8 @@
                         <img src="./assets/image/qrcode.png" class="projects__img">
                         <div class="projects__modal">
                             <div>
-                                <span class="projects__subtitle">Tiện Ích</span>
-                                <h3 class="projects__title">Tạo Mã QR</h3>
+                                <span class="projects__subtitle" data-en="Utility" data-vi="Tiện Ích">Utility</span>
+                                <h3 class="projects__title" data-en="Generate QR Code" data-vi="Tạo Mã QR">Generate QR Code</h3>
                                 <a href="qrcode" class="projects__button button button_small">
                                     <i class="fa-solid fa-arrow-up-right-from-square"></i>
                                 </a>
@@ -256,23 +264,23 @@
             <div class="container">
 
                 <div class="about__content">
-                    <h2 class="about__title">About Me</h2>
+                    <h2 class="about__title" data-en="About Me" data-vi="Giới Thiệu Về Tớ">About Me</h2>
                 </div>
 
                 <div class="about__box_area grid">
                     <div class="about__box">
                         <span class="icon"><img src="./assets/img/01.png" alt=""></span>
-                        <h5>Đôi Lượt Về Tớ</h5>
-                        <p>
-                            Sinh ra và lớn lên tại Quảng Ngãi, hiện tại mình đang là sinh viên của trường Đại học Duy Tân, Đà Nẵng. Ngay từ nhỏ, mình đã có niềm đam mê và sự tò mò đặc biệt đối với công nghệ, đồ điện tử. Những lúc rảnh rỗi, mình thường dành thời gian tìm hiểu, nghiên cứu về chúng và nhờ đó tích lũy được một chút kiến thức.
+                        <h5 data-en="A Few Words About Me" data-vi="Đôi Lượt Về Tớ">A Few Words About Me</h5>
+                        <p data-en="Born and raised in Quang Ngai, I am currently a student at Duy Tan University in Da Nang. Since childhood, I have had a deep passion and curiosity for technology and electronic devices. In my free time, I often spend time exploring and researching them, which has helped me accumulate some knowledge along the way." data-vi="Sinh ra và lớn lên tại Quảng Ngãi, hiện tại mình đang là sinh viên của trường Đại học Duy Tân, Đà Nẵng. Ngay từ nhỏ, mình đã có niềm đam mê và sự tò mò đặc biệt đối với công nghệ, đồ điện tử. Những lúc rảnh rỗi, mình thường dành thời gian tìm hiểu, nghiên cứu về chúng và nhờ đó tích lũy được một chút kiến thức.">
+                            Born and raised in Quang Ngai, I am currently a student at Duy Tan University in Da Nang. Since childhood, I have had a deep passion and curiosity for technology and electronic devices. In my free time, I often spend time exploring and researching them, which has helped me accumulate some knowledge along the way.
                         </p>
 
                     </div>
                     <div class="about__box">
                         <span class="icon"><img src="./assets/img/02.png" alt=""></span>
-                        <h5>Bước Ngoặt Trong Cuộc Đời</h5>
-                        <p>
-                            Bước ngoặt thực sự đến vào những năm cấp 3, đặc biệt là trong khoảng thời gian dịch COVID-19. Khi có nhiều thời gian ở nhà, mình bắt đầu học lập trình web và khám phá mọi thứ mà bản thân tò mò, thắc mắc. May mắn thay, mình được rất nhiều anh chị đi trước tận tình chỉ dẫn, giúp đỡ, nhờ đó mà mình đã tiếp thu được nhiều kiến thức quý giá. Không chỉ dừng lại ở việc học, mình còn tự tay xây dựng một số trang web nhỏ như những cột mốc đánh dấu hành trình phát triển của bản thân.Bước ngoặt thực sự đến vào những năm cấp 3, đặc biệt là trong khoảng thời gian dịch COVID-19. Khi có nhiều thời gian ở nhà, mình bắt đầu học lập trình web và khám phá mọi thứ mà bản thân tò mò, thắc mắc. May mắn thay, mình được rất nhiều anh chị đi trước tận tình chỉ dẫn, giúp đỡ, nhờ đó mà mình đã tiếp thu được nhiều kiến thức quý giá. Không chỉ dừng lại ở việc học, mình còn tự tay xây dựng một số trang web nhỏ như những cột mốc đánh dấu hành trình phát triển của bản thân.
+                        <h5 data-en="A Turning Point in Life" data-vi="Bước Ngoặt Trong Cuộc Đời">A Turning Point in Life</h5>
+                        <p data-en="The real turning point came during my high school years, especially during the COVID-19 pandemic. With more time at home, I started learning web development and exploring everything that sparked my curiosity. Fortunately, I received generous guidance and support from experienced mentors, which allowed me to absorb a wealth of valuable knowledge. Beyond just learning, I also built a few small websites on my own, marking important milestones in my personal growth journey." data-vi="Bước ngoặt thực sự đến vào những năm cấp 3, đặc biệt là trong khoảng thời gian dịch COVID-19. Khi có nhiều thời gian ở nhà, mình bắt đầu học lập trình web và khám phá mọi thứ mà bản thân tò mò, thắc mắc. May mắn thay, mình được rất nhiều anh chị đi trước tận tình chỉ dẫn, giúp đỡ, nhờ đó mà mình đã tiếp thu được nhiều kiến thức quý giá. Không chỉ dừng lại ở việc học, mình còn tự tay xây dựng một số trang web nhỏ như những cột mốc đánh dấu hành trình phát triển của bản thân.Bước ngoặt thực sự đến vào những năm cấp 3, đặc biệt là trong khoảng thời gian dịch COVID-19. Khi có nhiều thời gian ở nhà, mình bắt đầu học lập trình web và khám phá mọi thứ mà bản thân tò mò, thắc mắc. May mắn thay, mình được rất nhiều anh chị đi trước tận tình chỉ dẫn, giúp đỡ, nhờ đó mà mình đã tiếp thu được nhiều kiến thức quý giá. Không chỉ dừng lại ở việc học, mình còn tự tay xây dựng một số trang web nhỏ như những cột mốc đánh dấu hành trình phát triển của bản thân.">
+                            The real turning point came during my high school years, especially during the COVID-19 pandemic. With more time at home, I started learning web development and exploring everything that sparked my curiosity. Fortunately, I received generous guidance and support from experienced mentors, which allowed me to absorb a wealth of valuable knowledge. Beyond just learning, I also built a few small websites on my own, marking important milestones in my personal growth journey.
                         </p>
 
                     </div>
@@ -280,20 +288,20 @@
 
                     <div class="about__box">
                         <span class="icon"><img src="./assets/img/03.png"></span>
-                        <h5>Sở Thích</h5>
-                        <p>
-                            Ngoài lập trình, mình còn có nhiều sở thích khác. Mình rất thích chơi bóng đá cùng bạn bè, vừa để giải trí, vừa để rèn luyện sức khỏe. Bên cạnh đó, mình cũng đam mê khám phá những công nghệ mới, tìm tòi những thứ độc đáo mà mình chưa biết. Ngoài ra, mình thích gặp gỡ, trò chuyện với bạn bè để mở rộng mối quan hệ và học hỏi thêm nhiều điều thú vị từ mọi người. Một sở thích khác mà mình rất yêu thích là đi ngắm cảnh đẹp, đặc biệt là những nơi có thiên nhiên hoang sơ, yên bình.
+                        <h5 data-en="Hobbies" data-vi="Sở Thích">Hobbies</h5>
+                        <p data-en="Besides programming, I have many other interests. I love playing football with my friends, both for fun and to stay active. Additionally, I have a passion for exploring new technologies and discovering unique things I haven't encountered before. I also enjoy meeting and chatting with friends to expand my network and learn interesting things from others. Another favorite hobby of mine is sightseeing, especially visiting places with pristine and peaceful nature." data-vi="Ngoài lập trình, mình còn có nhiều sở thích khác. Mình rất thích chơi bóng đá cùng bạn bè, vừa để giải trí, vừa để rèn luyện sức khỏe. Bên cạnh đó, mình cũng đam mê khám phá những công nghệ mới, tìm tòi những thứ độc đáo mà mình chưa biết. Ngoài ra, mình thích gặp gỡ, trò chuyện với bạn bè để mở rộng mối quan hệ và học hỏi thêm nhiều điều thú vị từ mọi người. Một sở thích khác mà mình rất yêu thích là đi ngắm cảnh đẹp, đặc biệt là những nơi có thiên nhiên hoang sơ, yên bình.">
+                            Besides programming, I have many other interests. I love playing football with my friends, both for fun and to stay active. Additionally, I have a passion for exploring new technologies and discovering unique things I haven't encountered before. I also enjoy meeting and chatting with friends to expand my network and learn interesting things from others. Another favorite hobby of mine is sightseeing, especially visiting places with pristine and peaceful nature.
                         </p>
 
                     </div>
                     <div class="about__box">
                         <span class="icon"><img src="./assets/img/04.png"></span>
-                        <h5>Ưu Nhược Điểm</h5>
-                        <p>
-                            Về điểm mạnh, mình là người có tính tò mò cao, luôn muốn khám phá, tìm hiểu về mọi thứ xung quanh. Một khi đã cảm thấy hứng thú với điều gì, mình sẽ rất chịu khó tìm tòi và làm việc hết mình. Điều này giúp mình có động lực để học hỏi và phát triển bản thân không ngừng. Bên cạnh đó, mình cũng là người khá cởi mở, thích giao lưu với mọi người, điều này giúp mình mở rộng được nhiều mối quan hệ và có cơ hội học hỏi từ những người xung quanh.
+                        <h5 data-en="Strengths and Weaknesses" data-vi="Ưu Nhược Điểm">Strengths and Weaknesses</h5>
+                        <p data-en="Regarding my strengths, I am naturally curious and always eager to explore and learn about everything around me. Once I find something interesting, I dedicate myself to researching and working hard on it. This trait motivates me to continuously learn and develop myself. Additionally, I am quite open and enjoy socializing with others, which helps me expand my network and gain valuable knowledge from those around me." data-vi="Về điểm mạnh, mình là người có tính tò mò cao, luôn muốn khám phá, tìm hiểu về mọi thứ xung quanh. Một khi đã cảm thấy hứng thú với điều gì, mình sẽ rất chịu khó tìm tòi và làm việc hết mình. Điều này giúp mình có động lực để học hỏi và phát triển bản thân không ngừng. Bên cạnh đó, mình cũng là người khá cởi mở, thích giao lưu với mọi người, điều này giúp mình mở rộng được nhiều mối quan hệ và có cơ hội học hỏi từ những người xung quanh.">
+                            Regarding my strengths, I am naturally curious and always eager to explore and learn about everything around me. Once I find something interesting, I dedicate myself to researching and working hard on it. This trait motivates me to continuously learn and develop myself. Additionally, I am quite open and enjoy socializing with others, which helps me expand my network and gain valuable knowledge from those around me.
                         </p>
-                        <p>
-                            Tuy nhiên, mình cũng có những nhược điểm mà bản thân đang cố gắng khắc phục. Mình khá lười biếng và dễ mất tập trung khi làm một công việc cụ thể. Đôi khi, mình còn rơi vào trạng thái "nỗ lực ảo" – cảm giác như đã làm rất nhiều nhưng thực chất lại chưa đạt được kết quả mong muốn. Dù vậy, mình vẫn đang từng ngày hoàn thiện bản thân và tìm cách khắc phục những điểm yếu này để trở nên tốt hơn trong tương lai.
+                        <p data-en="However, I also have weaknesses that I am working to improve. I can be quite lazy at times and easily lose focus when working on a specific task. Sometimes, I fall into a state of “VIRTUAL EFFORT”—feeling like I’ve done a lot, but in reality, not achieving the desired results. Nevertheless, I am continuously striving to improve myself and find ways to overcome these weaknesses to become better in the future." data-vi="Tuy nhiên, mình cũng có những nhược điểm mà bản thân đang cố gắng khắc phục. Mình khá lười biếng và dễ mất tập trung khi làm một công việc cụ thể. Đôi khi, mình còn rơi vào trạng thái “NỔ LỰC ẢO” – cảm giác như đã làm rất nhiều nhưng thực chất lại chưa đạt được kết quả mong muốn. Dù vậy, mình vẫn đang từng ngày hoàn thiện bản thân và tìm cách khắc phục những điểm yếu này để trở nên tốt hơn trong tương lai.">
+                            However, I also have weaknesses that I am working to improve. I can be quite lazy at times and easily lose focus when working on a specific task. Sometimes, I fall into a state of “VIRTUAL EFFORT”—feeling like I’ve done a lot, but in reality, not achieving the desired results. Nevertheless, I am continuously striving to improve myself and find ways to overcome these weaknesses to become better in the future.
                         </p>
 
                     </div>
@@ -307,12 +315,12 @@
         <section id="resume">
             <div class="container">
                 <div class="resume__content">
-                    <h2 class="resume__title">My Resume</h2>
+                    <h2 class="resume__title" data-en="My Resume" data-vi="Sơ Yếu Lý Lịch Của Tớ">My Resume</h2>
                 </div>
 
                 <div class="resume__content grid">
                     <div class="resume__area">
-                        <h3 class="resume_title">Education</h3>
+                        <h3 class="resume_title" data-en="Education" data-vi="Học Vấn">Education</h3>
                         
                         <div class="resume__box">
                             <div class="resume__step">
@@ -320,10 +328,10 @@
                                     <i class="fa-solid fa-graduation-cap"></i>
                                 </div>
                                 <div class="resume__step__content">
-                                    <span class="resume__step__time"><i class="fa-solid fa-calendar"></i> 2023 - Present</span>
-                                    <h3 class="resume__step__title">Duy Tan University (DTU)</h3>
-                                    <p class="resume__step__description">
-                                        Chuyên ngành Kỹ thuật phần mềm (chuẩn CMU), tìm hiểu về phát triển phần mềm, phát triển web.
+                                    <span class="resume__step__time" data-en=" 2023 - Present" data-vi=" 2023 - Hiện tại"><i class="fa-solid fa-calendar"></i> 2023 - Present</span>
+                                    <h3 class="resume__step__title" data-en="Duy Tan University (DTU)" data-vi="Đại Học Duy Tân (DTU)">Duy Tan University (DTU)</h3>
+                                    <p class="resume__step__description" data-en="Major in Software Engineering (CMU standard), focusing on software development and web development." data-vi="Chuyên ngành Kỹ thuật phần mềm (chuẩn CMU), tìm hiểu về phát triển phần mềm, phát triển web.">
+                                        Major in Software Engineering (CMU standard), focusing on software development and web development.
                                     </p>
                                 </div>
                             </div>
@@ -333,10 +341,10 @@
                                     <i class="fa-solid fa-graduation-cap"></i>
                                 </div>
                                 <div class="resume__step__content">
-                                    <span class="resume__step__time"><i class="fa-solid fa-calendar"></i> 2020 - 2023</span>
-                                    <h3 class="resume__step__title">Tran Quoc Tuan High School</h3>
-                                    <p class="resume__step__description">
-                                        Học chuyên Lý, Toán, Anh, phát triển tư duy logic và kỹ năng ngôn ngữ.
+                                    <span class="resume__step__time" data-en=" 2020 - 2023" data-vi=" 2020 - 2023"><i class="fa-solid fa-calendar"></i> 2020 - 2023</span>
+                                    <h3 class="resume__step__title" data-en="Tran Quoc Tuan High School" data-vi="Trường THPT Trần Quốc Tuấn">Tran Quoc Tuan High School</h3>
+                                    <p class="resume__step__description" data-en="Majored in Physics, Mathematics, and English, developing logical thinking and language skills." data-vi="Học chuyên Lý, Toán, Anh, phát triển tư duy logic và kỹ năng ngôn ngữ.">
+                                        Majored in Physics, Mathematics, and English, developing logical thinking and language skills.
                                     </p>
                                 </div>
                             </div>
@@ -346,10 +354,10 @@
                                     <i class="fa-solid fa-graduation-cap"></i>
                                 </div>
                                 <div class="resume__step__content">
-                                    <span class="resume__step__time"><i class="fa-solid fa-calendar"></i> 2012 - 2020</span>
-                                    <h3 class="resume__step__title">Chanh Lo School</h3>
-                                    <p class="resume__step__description">
-                                        Học các môn cơ bản, xây dựng nền tảng kiến thức và kỹ năng học tập.
+                                    <span class="resume__step__time" data-en=" 2012 - 2020" data-vi=" 2012 - 2020"><i class="fa-solid fa-calendar"></i> 2012 - 2020</span>
+                                    <h3 class="resume__step__title" data-en="Chanh Lo School" data-vi="Trường Chánh Lộ">Chanh Lo School</h3>
+                                    <p class="resume__step__description" data-en="Studied fundamental subjects, building a strong knowledge foundation and learning skills." data-vi="Học các môn cơ bản, xây dựng nền tảng kiến thức và kỹ năng học tập.">
+                                        Studied fundamental subjects, building a strong knowledge foundation and learning skills.
                                     </p>
                                 </div>
                             </div>
@@ -357,7 +365,7 @@
                     </div>
 
                     <div class="resume__area">
-                        <h3 class="resume_title">Experience</h3>
+                        <h3 class="resume_title" data-en="Experience" data-vi="Kinh Nghiệm">Experience</h3>
                         <div class="resume__box">
 
                             <div class="resume__step">
@@ -365,10 +373,10 @@
                                     <i class="fa-solid fa-briefcase"></i>
                                 </div>
                                 <div class="resume__step__content">
-                                    <span class="resume__step__time"><i class="fa-solid fa-calendar"></i> 2021 - Present</span>
-                                    <h3 class="resume__step__title">Freelancer</h3>
-                                    <p class="resume__step__description">
-                                        Làm việc tự do, tìm hiểu và phát triển các dự án cá nhân.
+                                    <span class="resume__step__time" data-en=" 2021 - Present" data-vi=" 2021 - Hiện tại"><i class="fa-solid fa-calendar"></i> 2021 - Present</span>
+                                    <h3 class="resume__step__title" data-en="Freelancer" data-vi="Freelancer">Freelancer</h3>
+                                    <p class="resume__step__description" data-en="Freelancing, exploring and developing personal projects." data-vi="Làm việc tự do, tìm hiểu và phát triển các dự án cá nhân.">
+                                        Freelancing, exploring and developing personal projects.
                                     </p>
                                 </div>
                             </div>
@@ -378,10 +386,10 @@
                                     <i class="fa-solid fa-briefcase"></i>
                                 </div>
                                 <div class="resume__step__content">
-                                    <span class="resume__step__time"><i class="fa-solid fa-calendar"></i> 2021 - Present</span>
-                                    <h3 class="resume__step__title">Web Developer</h3>
-                                    <p class="resume__step__description">
-                                        Làm việc tại nhóm phát triển web, tham gia xây dựng và phát triển các dự án web.
+                                    <span class="resume__step__time" data-en=" 2021 - Present" data-vi=" 2021 - Hiện tại"><i class="fa-solid fa-calendar"></i> 2021 - Present</span>
+                                    <h3 class="resume__step__title" data-en="Web Developer" data-vi="Web Developer">Web Developer</h3>
+                                    <p class="resume__step__description" data-en="Worked in a web development team, contributing to the building and enhancement of web projects." data-vi="Làm việc tại nhóm phát triển web, tham gia xây dựng và phát triển các dự án web.">
+                                        Worked in a web development team, contributing to the building and enhancement of web projects.
                                     </p>
                                 </div>
                             </div>
@@ -391,10 +399,10 @@
                                     <i class="fa-solid fa-briefcase"></i>
                                 </div>
                                 <div class="resume__step__content">
-                                    <span class="resume__step__time"><i class="fa-solid fa-calendar"></i> 2024 - Present</span>
-                                    <h3 class="resume__step__title">Software Engineer</h3>
-                                    <p class="resume__step__description">
-                                        Phát triển và bảo trì ứng dụng web, tối ưu hóa trải nghiệm người dùng.
+                                    <span class="resume__step__time" data-en=" 2024 - Present" data-vi=" 2024 - Hiện tại"><i class="fa-solid fa-calendar"></i> 2024 - Present</span>
+                                    <h3 class="resume__step__title" data-en="Software Engineer" data-vi="Kỹ Sư Phần Mềm">Software Engineer</h3>
+                                    <p class="resume__step__description" data-en="Developed and maintained web applications, optimizing user experience." data-vi="Phát triển và bảo trì ứng dụng web, tối ưu hóa trải nghiệm người dùng.">
+                                        Developed and maintained web applications, optimizing user experience.
                                     </p>
                                 </div>
                             </div>
@@ -410,12 +418,12 @@
             <div class="container">
 
                 <div class="skills__content">
-                    <h2 class="skills__title">My Skills</h2>
+                    <h2 class="skills__title" data-en="My Skills" data-vi="Các Kỹ Năng Của Tớ">My Skills</h2>
                 </div>
 
                 <div class="skills__content grid">
                     <div class="skills__area">
-                        <h3 class="skills_title">Kĩ Năng Đang Học</h3>
+                        <h3 class="skills_title" data-en="Skills in Progress" data-vi="Kĩ Năng Đang Học">Skills in Progress</h3>
                         
                         <div class="progress__box">
                             <div class="skills__group">
@@ -464,7 +472,7 @@
                     </div>
 
                     <div class="skills__area">
-                        <h3 class="skills_title">Kĩ Năng Đã Học</h3>
+                        <h3 class="skills_title" data-en="Acquired Skills" data-vi="Kĩ Năng Đã Học">Acquired Skills</h3>
 
                         <div class="skills__box">
                             <div class="skills__group">
@@ -472,28 +480,28 @@
                                     <i class="fa-regular fa-circle-check"></i>
                                     <div>
                                         <h3 class="skills__name">C++</h3>
-                                        <span class="skills__level">Intermediate</span>
+                                        <span class="skills__level" data-en="Intermediate" data-vi="Trung bình">Intermediate</span>
                                     </div>
                                 </div>
                                 <div class="skills__data">
                                     <i class="fa-regular fa-circle-check"></i>
                                     <div>
                                         <h3 class="skills__name">MySQL</h3>
-                                        <span class="skills__level">Basic</span>
+                                        <span class="skills__level" data-en="Basic" data-vi="Cơ bản">Basic</span>
                                     </div>
                                 </div>
                                 <div class="skills__data">
                                     <i class="fa-regular fa-circle-check"></i>
                                     <div>
                                         <h3 class="skills__name">Java</h3>
-                                        <span class="skills__level">Basic</span>
+                                        <span class="skills__level" data-en="Basic" data-vi="Cơ bản">Basic</span>
                                     </div>
                                 </div>
                                 <div class="skills__data">
                                     <i class="fa-regular fa-circle-check"></i>
                                     <div>
                                         <h3 class="skills__name">JavaScript</h3>
-                                        <span class="skills__level">Advance</span>
+                                        <span class="skills__level" data-en="Advance" data-vi="Trình độ cao">Advance</span>
                                     </div>
                                 </div>
 
@@ -503,28 +511,28 @@
                                     <i class="fa-regular fa-circle-check"></i>
                                     <div>
                                         <h3 class="skills__name">C</h3>
-                                        <span class="skills__level">Intermediate</span>
+                                        <span class="skills__level" data-en="Intermediate" data-vi="Trung bình">Intermediate</span>
                                     </div>
                                 </div>
                                 <div class="skills__data">
                                     <i class="fa-regular fa-circle-check"></i>
                                     <div>
                                         <h3 class="skills__name">HTML/CSS</h3>
-                                        <span class="skills__level">Basic</span>
+                                        <span class="skills__level" data-en="Basic" data-vi="Cơ bản">Basic</span>
                                     </div>
                                 </div>
                                 <div class="skills__data">
                                     <i class="fa-regular fa-circle-check"></i>
                                     <div>
                                         <h3 class="skills__name">Photoshop</h3>
-                                        <span class="skills__level">Advance</span>
+                                        <span class="skills__level" data-en="Advance" data-vi="Trình độ cao">Advance</span>
                                     </div>
                                 </div>
                                 <div class="skills__data">
                                     <i class="fa-regular fa-circle-check"></i>
                                     <div>
                                         <h3 class="skills__name">Pascal</h3>
-                                        <span class="skills__level">Basic</span>
+                                        <span class="skills__level" data-en="Basic" data-vi="Cơ bản">Basic</span>
                                     </div>
                                 </div>
 
@@ -542,7 +550,7 @@
             <div class="container">
 
                 <div class="contact__content">
-                    <h2 class="contact__title">Contact Me</h2>
+                    <h2 class="contact__title" data-en="Contact Me" data-vi="Liên Hệ Tớ :3">Contact Me</h2>
                 </div>
 
                 <div class="contact__box_area">
@@ -550,12 +558,12 @@
                         <div class="map">
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1950.456331856086!2d108.8011469!3d15.1241304!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x316852cd89603939%3A0x2e554f035a6642c3!2zVHAuIFF14bqjbmcgTmfhuqNpLCBRdeG6rW5nIE5naGnDqmksIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1612621523718!5m2!1svi!2s" width="100%" height="100%" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                         </div>
-                        <h3 class="contact_title">Contact Form</h3>
+                        <h3 class="contact_title" data-en="Contact Form" data-vi="Mẫu Liên Hệ">Contact Form</h3>
                         <form target="_blank" action="https://formsubmit.co/dinhduyvinh69@gmail.com" method="POST">
-                            <input id="name" name="name" type="text" placeholder="Full name" required>
-                            <input id="email" name="email" type="email" placeholder="Email address" required>
-                            <textarea id="message" name="text" rows="6" placeholder="Your Message" required></textarea>
-                            <button type="submit" class="see__more">Send me <i class="fa-solid fa-arrow-right arrow"></i></button>
+                            <input id="name" name="name" type="text" placeholder="Full name" data-en="Full name" data-vi="Họ và tên" required>
+                            <input id="email" name="email" type="email" placeholder="Email address" data-en="Email address" data-vi="Địa chỉ mail" required>
+                            <textarea id="message" name="text" rows="6" placeholder="Your Message" data-en="Your Message" data-vi="Tin nhắn của bạn" required></textarea>
+                            <button type="submit" class="see__more" data-en="Send me" data-vi="Gửi cho tớ">Send me <i class="fa-solid fa-arrow-right arrow"></i></button>
                         </form>
                     </div>
                 </div>
@@ -631,7 +639,7 @@
     <!--=============== FOOTER ===============-->
     <footer class="footer">
         <span class="footer__copy">
-            <br><h5>© 2025 <a href="https://me.momo.vn/dinhduyvinh" rel="nofollow" target="_blank">Đinh Duy Vinh</a>. All rights reserved.</h5>
+            <br><h5 data-en="© 2025 Đinh Duy Vinh. All rights reserved." data-vi="© 2025 Đinh Duy Vinh. Đã đăng ký bản quyền.">© 2025 <a href="https://me.momo.vn/dinhduyvinh" rel="nofollow" target="_blank">Đinh Duy Vinh</a>. All rights reserved.</h5>
         </span>
     </footer>
 
