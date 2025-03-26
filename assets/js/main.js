@@ -15,7 +15,6 @@ const menuShowBtn = document.querySelector('.menu-show-btn');
 let menuTimeout;
 let isHoveringMenu = false;
 checkScrollPosition();
-
 window.addEventListener("scroll", handleScroll);
 menuHideBtn.addEventListener('click', hideMenuManual);
 menuShowBtn.addEventListener('click', showMenuManual);
@@ -122,6 +121,18 @@ modeToggle.addEventListener("click", () => {
 
 
 
+// Show header when scrolling up
+window.addEventListener('scroll', function() {
+    const header = document.querySelector('header');
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+
+
+
 // ScrollReveal animations
 const sr = ScrollReveal({
     origin: 'top',
@@ -207,7 +218,6 @@ const shapeSmall1 = document.querySelector('.home__shape-small-1');
 const moveDistance = 80; // Khoảng cách di chuyển (px)
 const moveDuration = 1.5; // Thời gian di chuyển (s)
 let direction = 1; // 1 = trái -> phải, -1 = phải -> trái
-
 sections.forEach((section, index) => {
     ScrollTrigger.create({
         trigger: section,
@@ -231,3 +241,66 @@ function animateShapeSmall1(dir) {
         });
     }
 }
+
+
+
+// Language switching functionality
+const languageBtn = document.getElementById('languageBtn');
+const elementsToTranslate = document.querySelectorAll('[data-en], [data-vi]');
+let currentLanguage = localStorage.getItem('language') || 'en';
+function applyLanguage(lang) {
+    if (lang === 'en') {
+        document.body.classList.add('language-en');
+    } else {
+        document.body.classList.remove('language-en');
+    }
+    elementsToTranslate.forEach(element => {
+        if (element.hasAttribute(`data-${lang}`)) {
+            if ((element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') && element.hasAttribute('placeholder')) {
+                element.placeholder = element.getAttribute(`data-${lang}`);
+            } else if (element.classList.contains('button') || element.tagName === 'BUTTON') {
+                const translation = element.getAttribute(`data-${lang}`);
+                const icon = element.querySelector('i')?.outerHTML || '';
+                element.innerHTML = `${translation}${icon}`;
+            } else {
+                const translation = element.getAttribute(`data-${lang}`);
+                const tempDiv = document.createElement('div');
+                tempDiv.innerHTML = translation;
+                // Preserve special elements (<b>, <i>, <a>)
+                const originalElements = {
+                    'b': element.querySelector('b'),
+                    'i': element.querySelector('i'),
+                    'a': element.querySelector('a')
+                };
+                const tempElements = {
+                    'b': tempDiv.querySelector('b'),
+                    'i': tempDiv.querySelector('i'),
+                    'a': tempDiv.querySelector('a')
+                };
+                Object.keys(originalElements).forEach(tag => {
+                    if (originalElements[tag] && tempElements[tag]) {
+                        tempElements[tag].outerHTML = originalElements[tag].outerHTML;
+                    }
+                });
+                element.innerHTML = tempDiv.innerHTML;
+            }
+        }
+    });
+    if (lang === 'en') {
+        languageBtn.classList.remove('vi');
+    } else {
+        languageBtn.classList.add('vi');
+    }
+    localStorage.setItem('language', lang);
+    currentLanguage = lang;
+}
+languageBtn.addEventListener('click', () => {
+    const newLanguage = currentLanguage === 'en' ? 'vi' : 'en';
+    applyLanguage(newLanguage);
+});
+document.addEventListener('DOMContentLoaded', () => {
+    if (currentLanguage === 'en') {
+        document.body.classList.add('language-en');
+    }
+    applyLanguage(currentLanguage);
+});
