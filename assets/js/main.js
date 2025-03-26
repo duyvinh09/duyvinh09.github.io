@@ -7,7 +7,88 @@ window.addEventListener("load", () => {
 });
 
 
-// Highlight navigation link on scroll
+
+// Bottom Navigation Menu
+const bottomMenu = document.querySelector('.nav__menu');
+const menuHideBtn = document.querySelector('.menu-hide-btn');
+const menuShowBtn = document.querySelector('.menu-show-btn');
+let menuTimeout;
+let isHoveringMenu = false;
+checkScrollPosition();
+
+window.addEventListener("scroll", handleScroll);
+menuHideBtn.addEventListener('click', hideMenuManual);
+menuShowBtn.addEventListener('click', showMenuManual);
+bottomMenu.addEventListener('mouseenter', () => {
+    isHoveringMenu = true;
+    clearTimeout(menuTimeout);
+    if (window.scrollY > 10) {
+        menuHideBtn.classList.add('show');
+    }
+});
+bottomMenu.addEventListener('mouseleave', () => {
+    isHoveringMenu = false;
+    if (window.scrollY > 10 && !menuHideBtn.matches(':hover')) {
+        menuTimeout = setTimeout(hideMenuAuto, 2500);
+    }
+});
+menuHideBtn.addEventListener('mouseenter', () => {
+    isHoveringMenu = true;
+    clearTimeout(menuTimeout);
+});
+menuHideBtn.addEventListener('mouseleave', () => {
+    isHoveringMenu = false;
+    if (window.scrollY > 10) {
+        menuTimeout = setTimeout(hideMenuAuto, 2500);
+    }
+});
+function checkScrollPosition() {
+    if (window.scrollY < 10) {
+        menuHideBtn.classList.remove('show');
+    } else {
+        menuHideBtn.classList.add('show');
+    }
+}
+function handleScroll() {
+    showMenu();
+    if (!isHoveringMenu) {
+        clearTimeout(menuTimeout);
+        menuTimeout = setTimeout(hideMenuAuto, 2500);
+    }
+}
+function showMenu() {
+    bottomMenu.classList.remove('hide');
+    if (window.scrollY > 10) {
+        menuHideBtn.classList.add('show');
+    }
+    menuShowBtn.classList.remove('active');
+    checkScrollPosition();
+}
+function hideMenuAuto() {
+    if (window.scrollY > 10 && !isHoveringMenu) {
+        bottomMenu.classList.add('hide');
+        menuHideBtn.classList.remove('show');
+        menuShowBtn.classList.add('active');
+    }
+}
+function hideMenuManual() {
+    bottomMenu.classList.add('hide');
+    menuHideBtn.classList.remove('show');
+    menuShowBtn.classList.add('active');
+    isHoveringMenu = false;
+}
+function showMenuManual() {
+    bottomMenu.classList.remove('hide');
+    menuShowBtn.classList.remove('active');
+    if (window.scrollY > 10) {
+        menuHideBtn.classList.add('show');
+    }
+    if (!isHoveringMenu) {
+        clearTimeout(menuTimeout);
+        menuTimeout = setTimeout(hideMenuAuto, 2500);
+    }
+}
+
 const sections = document.querySelectorAll("section[id]");
 window.addEventListener("scroll", () => {
     let scrollY = window.pageYOffset;
@@ -17,8 +98,9 @@ window.addEventListener("scroll", () => {
         const sectionId = current.getAttribute("id");
         const link = document.querySelector(`.nav__menu a[href*="${sectionId}"]`);
         link?.classList.toggle("active-link", scrollY > sectionTop && scrollY <= sectionTop + sectionHeight);
-    });    
-});    
+    });
+});
+
 
 
 // Toggle dark/light mode
@@ -39,6 +121,7 @@ modeToggle.addEventListener("click", () => {
 });
 
 
+
 // ScrollReveal animations
 const sr = ScrollReveal({
     origin: 'top',
@@ -50,6 +133,7 @@ const sr = ScrollReveal({
 sr.reveal(`.profile__border, .profile__name`);
 sr.reveal(`.profile__social, .profile_profession, .profile__info-group, .profile__buttons, .projects__card, 
 .skills__area, .journey__area, .note`, { delay: 200, origin: 'bottom' });
+
 
 
 // Background particle effect
@@ -70,6 +154,8 @@ document.addEventListener("DOMContentLoaded", function () {
         starsContainer.appendChild(star);
     }
 });
+
+
 
 // Animation counter achiverment
 const counterElement = document.querySelector('.counter');
@@ -98,6 +184,7 @@ const counterObserver = new IntersectionObserver((entries) => {
 counterElement && counterObserver.observe(counterElement);
 
 
+
 // Progress bar animation
 const skillsSection = document.getElementById('skills');
 const observer = new IntersectionObserver((entries) => {
@@ -113,12 +200,14 @@ const observer = new IntersectionObserver((entries) => {
 skillsSection && observer.observe(skillsSection);
 
 
+
 // Scroll animation for shape-small-1
 gsap.registerPlugin(ScrollTrigger);
-const shapeSmall1 = document.querySelector('.home__shape-small-1'); 
+const shapeSmall1 = document.querySelector('.home__shape-small-1');
 const moveDistance = 80; // Khoảng cách di chuyển (px)
-const moveDuration = 2.5; // Thời gian di chuyển (s)
+const moveDuration = 1.5; // Thời gian di chuyển (s)
 let direction = 1; // 1 = trái -> phải, -1 = phải -> trái
+
 sections.forEach((section, index) => {
     ScrollTrigger.create({
         trigger: section,
@@ -134,9 +223,11 @@ sections.forEach((section, index) => {
     });
 });
 function animateShapeSmall1(dir) {
-    gsap.to(shapeSmall1, {
-        x: dir * moveDistance,
-        duration: moveDuration,
-        ease: "power2.inOut"
-    });
+    if (window.innerWidth > 768) {
+        gsap.to(shapeSmall1, {
+            x: dir * moveDistance,
+            duration: moveDuration,
+            ease: "power2.inOut"
+        });
+    }
 }
