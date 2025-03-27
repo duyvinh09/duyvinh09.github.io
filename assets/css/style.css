@@ -879,7 +879,7 @@ img {
 
 .projects__tag {
     background: linear-gradient(var(--color-toolbar), var(--nav-bar)), var(--color-toolbar);
-    background-blend-mode: lighten;
+    background-blend-mode: darken;
     color: #fafdff;
     padding: 0.3rem 0.8rem;
     border-radius: 0 0 0.5rem 0.5rem;
