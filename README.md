@@ -2,25 +2,25 @@
 
 ![Ảnh preview portfolio](https://github.com/user-attachments/assets/8d57f4ae-0d43-4721-a4b1-42f7af2e11f5)
 
-*"Mỗi dòng code, mỗi pixel ở đây đều là những đêm thức khuya, những giọt mồ hôi và cả trái tim tôi gửi gắm"*
+*"Mỗi dòng code, mỗi pixel ở đây đều là những đêm thức khuya, những giọt mồ hôi và cả trái tim mình gửi gắm"*
 
-## 🌸 Lời Từ Trái Tim
+## Lời Từ Trái Tim
 
-Đây không chỉ là một website portfolio thông thường, mà là cả một hành trình **2 năm tự học**, những **thất bại đầu đời** và cả **niềm tự hào** khi mình bước chân vào con đường IT. Mình đã dành trọn 1 tháng ròng rã để:
+Đây không chỉ là một website portfolio thông thường, mà là cả một hành trình **2 năm tự học**, những **thất bại đầu đời** và cả **niềm tự hào** khi mình bước chân vào con đường IT. Mình đã dành trọn hơn 1 tháng ròng rã để:
 - Tìm kiếm những ý tưởng
 - Tự tay viết từng dòng code
 - Vật lộn với từng chi tiết nhỏ nhất
 - Thức trắng đêm chỉ để hoàn thiện 1 animation nhỏ
 
-## 🔒 Thành Thật Xin Bạn
+## Thành Thật Xin Bạn
 Mình hiểu bạn cũng đang tìm cảm hứng để xây dựng portfolio riêng - điều đó thật tuyệt! Nhưng mình xin bạn đừng sao chép:
-- Đây là **linh hồn** mà mình gửi gắm qua từng trang web
+- Đây là **linh hồn** mà mình gửi gắm qua từng dòng code
 - Là **bản CV tâm huyết** của mình dùng để ứng tuyển công việc
 - Là **câu chuyện cá nhân** chỉ thực sự ý nghĩa khi chính mình kể
 
 Hãy để mình giữ riêng **"đứa con tinh thần"** này làm của riêng, bạn nhé?
 
-## 🌿 Bạn Có Thể Lấy Gì Từ Đây?
+## Bạn Có Thể Lấy Gì Từ Đây?
 Mình rất vui nếu bạn tìm thấy cảm hứng từ:
 - Cách mình kể câu chuyện cá nhân qua giao diện
 - Ý tưởng sắp xếp section độc đáo
