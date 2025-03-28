@@ -1,5 +1,27 @@
-/*=============== GOOGLE FONTS ===============*/
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Be+Vietnam+Pro:wght@400;500;600&display=swap");
+/*=============== LOCAL FONTS ===============*/
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins/Poppins-Regular.woff2') format('woff2'),
+        url('../fonts/Poppins/Poppins-Regular.woff') format('woff');
+    font-weight: 400;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins/Poppins-Medium.woff2') format('woff2'),
+        url('../fonts/Poppins/Poppins-Medium.woff') format('woff');
+    font-weight: 500;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../fonts/Poppins/Poppins-SemiBold.woff2') format('woff2'),
+        url('../fonts/Poppins/Poppins-SemiBold.woff') format('woff');
+    font-weight: 600;
+    font-display: swap;
+}
 
 :root {
     scroll-behavior: smooth;
@@ -18,7 +40,7 @@
 
     --color02: #fff;
     --color-toolbar: rgba(10, 87, 164, 0.22);
-    --nav-bar: rgba(0, 0, 0, 0.22);
+    --color-toolbar2: rgba(0, 0, 0, 0.22);
     --box-shadow: rgba(116, 116, 116, 0.136);
     transition: background-color 0.5s ease;
 
@@ -49,7 +71,7 @@ body.dark {
     
     --color02: hsl(var(--hue), 24%, 12%);
     --color-toolbar: rgba(49, 140, 231, 0.22);
-    --nav-bar: rgba(255, 255, 255, 0.22);
+    --color-toolbar2: rgba(255, 255, 255, 0.22);
     --box-shadow: rgba(255, 255, 255, 0.12);
     transition: background-color 0.5s ease;
 }
@@ -90,10 +112,6 @@ body {
     background-color: var(--body-color);
     color: var(--text-color);
     transition: font-family 0.3s ease;
-}
-
-body.language-vi {
-    font-family: 'Be Vietnam Pro', sans-serif;
 }
 
 a {
@@ -567,7 +585,7 @@ img {
 .nav__menu {
     position: fixed;
     bottom: 1.5rem;
-    background: linear-gradient(var(--color-toolbar), var(--nav-bar)), var(--color-toolbar);
+    background: linear-gradient(var(--color-toolbar), var(--color-toolbar2)), var(--color-toolbar);
     background-blend-mode: multiply; /* multiply, overlay, screen, darken, lighten... */
     border-radius: 4rem;
     padding: 0.8rem 0.8rem;
@@ -730,7 +748,7 @@ img {
 
 .menu-show-btn {
     position: fixed;
-    background: linear-gradient(var(--color-toolbar), var(--nav-bar)), var(--color-toolbar);
+    background: linear-gradient(var(--color-toolbar), var(--color-toolbar2)), var(--color-toolbar);
     background-blend-mode: multiply;
     backdrop-filter: blur(10px);
     width: 85px;
@@ -878,7 +896,7 @@ img {
 }
 
 .projects__tag {
-    background: linear-gradient(var(--nav-bar), var(--color-toolbar)), var(--color-toolbar);
+    background: linear-gradient(var(--color-toolbar2), var(--color-toolbar)), var(--color-toolbar);
     background-blend-mode: darken;
     color: #fafdff;
     padding: 0.3rem 0.8rem;
