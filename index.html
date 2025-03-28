@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Tổng hợp các liên kết MXH của Đinh Duy Vinh. Bạn có thể tìm thấy mọi thông tin liên hệ khi truy cập vào">
-    <meta name="keywords" content="website">
     <!-- Open Graph Tag -->
     <meta property="og:url" content="https://dinhduyvinh.me/" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Đinh Duy Vinh - Portfolio" />
     <meta property="og:description" content="Tổng hợp các liên kết MXH của Đinh Duy Vinh. Bạn có thể tìm thấy mọi thông tin liên hệ khi truy cập vào" />
+    <meta name="keywords" content="Đinh Duy Vinh, Dinh Duy Vinh, đinh duy vinh, duyvinh09, dinh duy vinh, dinhduyvinh.github.io, dinhduyvinh.me">
     <meta property="og:image" content="https://i.imgur.com/9KL7Ugv.jpg" />
+    <meta name="author" content="duyvinh09">
 
     <title>Đinh Duy Vinh - PROFILE</title>
     <link rel="icon" type="image/png" href="./assets/img/favicon/favicon-96x96.png" sizes="96x96" />
@@ -28,6 +28,7 @@
 
     <style>
         body {
+            /* chặn select cho các trình duyệt */
             display: block; -khtml-user-select: none; -webkit-user-select: none; -moz-user-select: none;
             -ms-user-select: none; -o-user-select: none; user-select: none; unselectable: on;
         }
@@ -36,7 +37,7 @@
             cursor: url("https://1.bp.blogspot.com/-qbWo9mPKO2Y/YL9utYdQBdI/AAAAAAAAFs4/mtjGu6u2uGwtJsT4gZG4lbhLV1a5lG6OQCLcBGAsYHQ/s0/mouse-f1.png"), auto;
         }
         
-        a:hover, i:hover {
+        a:hover, .language-flag:hover, .moon:hover, .sun:hover, .menu-hide-btn:hover, .menu-show-btn:hover, .see__more:hover {
             cursor: url("https://1.bp.blogspot.com/-nYv2dLl3oXY/YL9utYBCh8I/AAAAAAAAFtA/wII4lVw5w4k-4isGMY41heTqk8U4TJujgCLcBGAsYHQ/s0/mouse-f2.png"), auto;
         }
     </style>
@@ -512,7 +513,7 @@
                                     <i class="fa-regular fa-circle-check"></i>
                                     <div>
                                         <h3 class="skills__name">C++</h3>
-                                        <span class="skills__level" data-en="Intermediate" data-vi="Trung bình">Intermediate</span>
+                                        <span class="skills__level" data-en="Intermediate" data-vi="Trung bình khá">Intermediate</span>
                                     </div>
                                 </div>
                                 <div class="skills__data">
@@ -533,7 +534,7 @@
                                     <i class="fa-regular fa-circle-check"></i>
                                     <div>
                                         <h3 class="skills__name">JavaScript</h3>
-                                        <span class="skills__level" data-en="Advance" data-vi="Trình độ cao">Advance</span>
+                                        <span class="skills__level" data-en="Advance" data-vi="Thành thạo">Advance</span>
                                     </div>
                                 </div>
 
@@ -543,7 +544,7 @@
                                     <i class="fa-regular fa-circle-check"></i>
                                     <div>
                                         <h3 class="skills__name">C</h3>
-                                        <span class="skills__level" data-en="Intermediate" data-vi="Trung bình">Intermediate</span>
+                                        <span class="skills__level" data-en="Intermediate" data-vi="Trung bình khá">Intermediate</span>
                                     </div>
                                 </div>
                                 <div class="skills__data">
@@ -557,7 +558,7 @@
                                     <i class="fa-regular fa-circle-check"></i>
                                     <div>
                                         <h3 class="skills__name">Photoshop</h3>
-                                        <span class="skills__level" data-en="Advance" data-vi="Trình độ cao">Advance</span>
+                                        <span class="skills__level" data-en="Advance" data-vi="Thành thạo">Advance</span>
                                     </div>
                                 </div>
                                 <div class="skills__data">
@@ -617,7 +618,7 @@
                         <i class="fi fi-sr-home"></i>
                     </a>
                     <div class="nav-item__tooltip">
-                        <div>Home</div>
+                        <div data-en="Home" data-vi="Trang chủ">Home</div>
                     </div>
                 </li>
                 <li class="nav__item">
@@ -625,7 +626,7 @@
                         <i class="fi fi-sr-star"></i>
                     </a>
                     <div class="nav-item__tooltip">
-                        <div>Project</div>
+                        <div data-en="Project" data-vi="Dự án">Project</div>
                     </div>
                 </li>
                 <li class="nav__item">
@@ -633,7 +634,7 @@
                         <i class="fi fi-sr-user"></i>
                     </a>
                     <div class="nav-item__tooltip">
-                        <div>About</div>
+                        <div data-en="About" data-vi="Về tôi">About</div>
                     </div>
                 </li>
                 <li class="nav__item">
@@ -641,7 +642,7 @@
                         <i class="fi fi-sr-document"></i>
                     </a>
                     <div class="nav-item__tooltip">
-                        <div>Resume</div>
+                        <div data-en="Resume" data-vi="CV">Resume</div>
                     </div>
                 </li>
                 <li class="nav__item">
@@ -649,7 +650,7 @@
                         <i class="fi fi-sr-book-open-cover"></i>
                     </a>
                     <div class="nav-item__tooltip">
-                        <div>Skills</div>
+                        <div data-en="Skill" data-vi="Kỹ năng">Skill</div>
                     </div>
                 </li>
                 <li class="nav__item">
@@ -657,7 +658,7 @@
                         <i class="fi fi-sr-comment-alt"></i>
                     </a>
                     <div class="nav-item__tooltip">
-                        <div>Contact</div>
+                        <div data-en="Contact" data-vi="Liên hệ">Contact</div>
                     </div>
                 </li>
             </ul>
@@ -671,7 +672,9 @@
     <!--=============== FOOTER ===============-->
     <footer class="footer">
         <span class="footer__copy">
-            <br><h5 data-en="© 2025 Đinh Duy Vinh. All rights reserved." data-vi="© 2025 Đinh Duy Vinh. Đã đăng ký bản quyền.">© 2025 <a href="https://me.momo.vn/dinhduyvinh" rel="nofollow" target="_blank">Đinh Duy Vinh</a>. All rights reserved.</h5>
+            <br><h5 data-en="© 2025 <a>Đinh Duy Vinh</a>. All rights reserved." data-vi="© 2025 <a>Đinh Duy Vinh</a>. Đã đăng ký bản quyền.">
+                © 2025 <a href="https://me.momo.vn/dinhduyvinh" rel="nofollow" target="_blank">Đinh Duy Vinh</a>. All rights reserved.
+            </h5>
         </span>
     </footer>
 
