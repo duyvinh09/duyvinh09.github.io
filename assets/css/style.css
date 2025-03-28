@@ -165,15 +165,15 @@ h3 {
 
 .bar {
     display: inline-block;
-    width: 6px;
-    height: 20px;
+    width: 8px;
+    height: 35px;
     background-color: rgba(66, 164, 245, 0.742);
     border-radius: 10px;
     animation: scale-up4 1s linear infinite;
 }
 
 .bar:nth-child(2) {
-    height: 35px;
+    height: 50px;
     margin: 0 5px;
     animation-delay: .25s;
 }
@@ -334,35 +334,27 @@ header.scrolled {
 }
 
 
-.bg-img {
+.bg_img {
     text-align: center;
     position: relative;
-    z-index: -1;
+    margin-bottom: -70px;
 }
 
-.background-img {
+.background_img {
     width: 70%;
     max-width: 700px;
     height: 30vh;
     border-radius: 8px;
     position: relative;
-    z-index: -1;
     object-fit: cover;
     box-shadow: 1px 1px 10px 2px var(--box-shadow);
     display: block;
     margin: 0 auto;
 }
 
-@media (max-width: 500px) {
-    .background-img {
-        object-fit: fill;
-        width: auto;
-        height: 160px;
-    }
-}
-
 .profile {
     position: relative;
+    z-index: 1;
     padding-top: 5rem;
     transition: background-color 0.5s ease;
 }
@@ -370,8 +362,8 @@ header.scrolled {
 .profile__area {
     row-gap: 2rem;
     transition: background-color 0.5s ease;
-    position: relative;
-    transform: translateY(-15%);
+    /* position: relative;
+    transform: translateY(-15%); */
 }
 
 .profile__data {
@@ -411,7 +403,7 @@ header.scrolled {
     width: 120px;
 }
 
-.status-indicator {
+.status_indicator {
     position: absolute;
     bottom: 5px;
     left: 92px;
@@ -423,7 +415,7 @@ header.scrolled {
     transition: background-color 0.5s ease;
 }
 
-.status-indicator::before {
+.status_indicator::before {
     content: "";
     position: absolute;
     top: 50%;
@@ -1446,6 +1438,12 @@ body.dark .global-shapes {
 }
 
 @media only screen and (min-width: 600px) and (max-width: 992px) {
+
+    .background-img {
+        object-fit: fill;
+        width: auto;
+        height: 23vh;
+    }
 
     .projects__content,
     .about__box_area {
