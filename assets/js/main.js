@@ -252,15 +252,12 @@ document.addEventListener('DOMContentLoaded', function() {
     function applyLanguage(lang) {
         document.body.classList.remove('language-en', 'language-vi');
         document.body.classList.add(`language-${lang}`);
-        document.body.style.fontFamily = lang === 'vi' 
-            ? "'Be Vietnam Pro', sans-serif" 
-            : "'Poppins', sans-serif";
         elementsToTranslate.forEach(element => {
             if (element.hasAttribute(`data-${lang}`)) {
                 if ((element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') && 
                     element.hasAttribute('placeholder')) {
                     element.placeholder = element.getAttribute(`data-${lang}`);
-                } 
+                }
                 else if (element.tagName === 'BUTTON' || element.classList.contains('button')) {
                     const translation = element.getAttribute(`data-${lang}`);
                     const icon = element.querySelector('i')?.outerHTML || '';
@@ -277,7 +274,6 @@ document.addEventListener('DOMContentLoaded', function() {
                             temp.outerHTML = original.outerHTML;
                         }
                     });
-                    
                     element.innerHTML = tempDiv.innerHTML;
                 }
             }
