@@ -3,8 +3,65 @@ window.addEventListener("load", () => {
     setTimeout(() => {
         document.getElementById("loader").classList.add("hide");
         document.getElementById("home").style.display = "block";
+        initAnimations();
     }, 700);
 });
+
+function initAnimations() {
+    // 1. Counter animation
+    const initCounter = () => {
+        const animateCounter = (element, duration) => {
+            const target = parseInt(element.textContent);
+            element.textContent = '0';
+            let start = 0;
+            const increment = target / (duration / 16);
+            const updateCounter = () => {
+                start += increment;
+                if (start < target) {
+                    element.textContent = Math.ceil(start);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target;
+                }
+            };
+            updateCounter();
+        };
+        const counterObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    document.querySelectorAll('.counter').forEach(el => {
+                        if (!isNaN(parseInt(el.textContent))) {
+                            animateCounter(el, 2000);
+                        }
+                    });
+                    counterObserver.disconnect();
+                }
+            });
+        }, { threshold: 0.5 });
+        const counterContainer = document.querySelector('.profile__info');
+        counterContainer && counterObserver.observe(counterContainer);
+    };
+
+    // 2. Skills animation
+    const initSkills = () => {
+        const skillsSection = document.getElementById('skills');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const progressBars = entry.target.querySelectorAll('.progress-bar');
+                    progressBars.forEach((progressBar) => {
+                        progressBar.style.animation = 'progressAnimation 3s ease-in-out forwards';
+                    });
+                    observer.disconnect();
+                }
+            });
+        }, { threshold: 0.5 });
+        skillsSection && observer.observe(skillsSection);
+    };
+
+    initCounter();
+    initSkills();
+}
 
 
 
@@ -168,50 +225,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-// Animation counter achiverment
-const counterElement = document.querySelector('.counter');
-const animateCounter = (element, target, duration) => {
-    let start = 0;
-    const increment = target / (duration / 16);
-    const updateCounter = () => {
-        start += increment;
-        if (start < target) {
-            element.textContent = Math.ceil(start);
-            requestAnimationFrame(updateCounter);
-        } else {
-            element.textContent = target;
-        }
-    };
-    updateCounter();
-};
-const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            animateCounter(counterElement, 999, 2000);
-            counterObserver.unobserve(counterElement);
-        }
-    });
-}, { threshold: 0.5 });
-counterElement && counterObserver.observe(counterElement);
-
-
-
-// Progress bar animation
-const skillsSection = document.getElementById('skills');
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            const progressBars = entry.target.querySelectorAll('.progress-bar');
-            progressBars.forEach((progressBar) => {
-                progressBar.style.animation = 'progressAnimation 3s ease-in-out forwards';
-            });
-        }
-    });
-}, { threshold: 0.5 });
-skillsSection && observer.observe(skillsSection);
-
-
-
 // Scroll animation for shape-small-1
 gsap.registerPlugin(ScrollTrigger);
 const shapeSmall1 = document.querySelector('.home__shape-small-1');
@@ -233,7 +246,7 @@ sections.forEach((section, index) => {
     });
 });
 function animateShapeSmall1(dir) {
-    if (window.innerWidth > 768) {
+    if (window.innerWidth > 993) {
         gsap.to(shapeSmall1, {
             x: dir * moveDistance,
             duration: moveDuration,
