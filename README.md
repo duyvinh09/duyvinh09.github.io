@@ -1,6 +1,6 @@
 # 💖 Portfolio Cá Nhân - Đinh Duy Vinh
 
-![Ảnh preview portfolio](https://github.com/user-attachments/assets/8d57f4ae-0d43-4721-a4b1-42f7af2e11f5)
+![Ảnh preview portfolio](https://github.com/user-attachments/assets/31fbb844-99d7-4596-9a87-125fd11c9915)
 
 *"Mỗi dòng code, mỗi pixel ở đây đều là những đêm thức khuya, những giọt mồ hôi và cả trái tim mình gửi gắm"*
 
