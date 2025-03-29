@@ -1393,9 +1393,10 @@ body.dark .global-shapes {
         row-gap: 1rem;
     }
 
-    .background-img {
-        object-fit: fill;
-        width: auto;
+    .background_img {
+        object-fit: cover;
+        width: 90%;
+        max-width: 420px;
         height: 160px;
     }
 
@@ -1439,10 +1440,10 @@ body.dark .global-shapes {
 
 @media only screen and (min-width: 600px) and (max-width: 992px) {
 
-    .background-img {
-        object-fit: fill;
-        width: auto;
-        height: 23vh;
+    .background_img {
+        object-fit: cover;
+        width: 80%;
+        height: 20vh;
     }
 
     .projects__content,
