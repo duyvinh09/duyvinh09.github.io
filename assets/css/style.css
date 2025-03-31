@@ -1029,7 +1029,7 @@ img {
     margin-bottom: 3.5rem;
     justify-content: center;
     position: relative;
-    width: fit-content; /* Quan trọng: chỉ chiếm độ rộng nội dung */
+    width: fit-content;
     margin-left: auto;
     margin-right: auto;
 }
@@ -1292,6 +1292,7 @@ form textarea {
     position: absolute;
     width: 2px;
     height: 2px;
+    border-radius: 50%;
     background-color: #ffffff;
     box-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
     animation: twinkle 3s infinite alternate ease-in-out;
