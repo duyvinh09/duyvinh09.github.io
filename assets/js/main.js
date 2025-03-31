@@ -31,7 +31,7 @@ function initAnimations() {
                 if (entry.isIntersecting) {
                     document.querySelectorAll('.counter').forEach(el => {
                         if (!isNaN(parseInt(el.textContent))) {
-                            animateCounter(el, 2000);
+                            animateCounter(el, 3000);
                         }
                     });
                     counterObserver.disconnect();
@@ -194,7 +194,7 @@ window.addEventListener('scroll', function() {
 const sr = ScrollReveal({
     origin: 'top',
     distance: '60px',
-    duration: 2500,
+    duration: 2000,
     delay: 200,
     reset: true,
 });
@@ -222,38 +222,6 @@ document.addEventListener("DOMContentLoaded", function () {
         starsContainer.appendChild(star);
     }
 });
-
-
-
-// Scroll animation for shape-small-1
-gsap.registerPlugin(ScrollTrigger);
-const shapeSmall1 = document.querySelector('.home__shape-small-1');
-const moveDistance = 80; // Khoảng cách di chuyển (px)
-const moveDuration = 1.5; // Thời gian di chuyển (s)
-let direction = 1; // 1 = trái -> phải, -1 = phải -> trái
-sections.forEach((section, index) => {
-    ScrollTrigger.create({
-        trigger: section,
-        start: "top center",
-        onEnter: () => {
-            direction = index % 2 === 0 ? 1 : -1; // Chẵn (0, 2, 4) -> phải, Lẻ (1, 3, 5) -> trái
-            animateShapeSmall1(direction);
-        },
-        onEnterBack: () => {
-            direction = index % 2 === 0 ? 1 : -1;
-            animateShapeSmall1(direction);
-        }
-    });
-});
-function animateShapeSmall1(dir) {
-    if (window.innerWidth > 993) {
-        gsap.to(shapeSmall1, {
-            x: dir * moveDistance,
-            duration: moveDuration,
-            ease: "power2.inOut"
-        });
-    }
-}
 
 
 
@@ -300,4 +268,19 @@ document.addEventListener('DOMContentLoaded', function() {
         applyLanguage(newLanguage);
     });
     applyLanguage(currentLanguage);
+});
+
+
+
+// Typed.js for typing animation in header
+document.addEventListener('DOMContentLoaded', function() {
+    new Typed('.typing-text', {
+        strings: ['DUY VINH'],
+        typeSpeed: 150,
+        backSpeed: 100,
+        loop: true,
+        showCursor: true,
+        cursorChar: '|',
+        smartBackspace: true
+    });
 });
