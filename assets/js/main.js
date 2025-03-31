@@ -58,7 +58,6 @@ function initAnimations() {
         }, { threshold: 0.5 });
         skillsSection && observer.observe(skillsSection);
     };
-
     initCounter();
     initSkills();
 }
@@ -190,22 +189,33 @@ window.addEventListener('scroll', function() {
 
 
 
-// ScrollReveal animations
-const sr = ScrollReveal({
-    origin: 'top',
-    distance: '60px',
-    duration: 2000,
-    delay: 200,
-    reset: true,
-});
-sr.reveal(`.profile__border, .profile__name`);
-sr.reveal(`.profile__social, .profile_profession, .profile__info-group, .profile__buttons, .projects__card, 
-.skills__area, .journey__area, .note`, { delay: 200, origin: 'bottom' });
+document.addEventListener('DOMContentLoaded', () => {
+    // ScrollReveal animations
+    const sr = ScrollReveal({
+        origin: 'top',
+        distance: '60px',
+        duration: 2000,
+        delay: 200,
+        reset: true,
+    });
+    sr.reveal(`.profile__border, .profile__name`);
+    sr.reveal(`.profile__social, .profile_profession, .profile__info-group, .profile__buttons, .projects__card, 
+    .skills__area, .resume__area, .note`, { origin: 'bottom' });
 
 
+    // Typed.js for typing animation in header
+    new Typed('.typing-text', {
+        strings: ["DUY VINH"],
+        typeSpeed: 150,
+        backSpeed: 100,
+        loop: true,
+        showCursor: true,
+        cursorChar: '|',
+        smartBackspace: true
+    });
 
-// Background particle effect
-document.addEventListener("DOMContentLoaded", function () {
+
+    // Background particle effect
     const numStars = 120;
     const starsContainer = document.querySelector(".stars");
     const body = document.querySelector("body");
@@ -221,12 +231,9 @@ document.addEventListener("DOMContentLoaded", function () {
         star.style.animationDelay = `${Math.random() * 3}s`;
         starsContainer.appendChild(star);
     }
-});
 
 
-
-// Language switching functionality
-document.addEventListener('DOMContentLoaded', function() {
+    // Language switching functionality
     const languageBtn = document.getElementById('languageBtn');
     const elementsToTranslate = document.querySelectorAll('[data-en], [data-vi]');
     let currentLanguage = localStorage.getItem('language') || 'en';
@@ -268,19 +275,4 @@ document.addEventListener('DOMContentLoaded', function() {
         applyLanguage(newLanguage);
     });
     applyLanguage(currentLanguage);
-});
-
-
-
-// Typed.js for typing animation in header
-document.addEventListener('DOMContentLoaded', function() {
-    new Typed('.typing-text', {
-        strings: ['DUY VINH'],
-        typeSpeed: 150,
-        backSpeed: 100,
-        loop: true,
-        showCursor: true,
-        cursorChar: '|',
-        smartBackspace: true
-    });
 });
