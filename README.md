@@ -30,7 +30,7 @@ Mình rất vui nếu bạn tìm thấy cảm hứng từ:
 
 ## 🔧 Công Nghệ Sử Dụng
 - Frontend: HTML5, CSS3, JavaScript
-- Animation: GSAP, ScrollReveal, ScrollTrigger
+- Animation: ScrollReveal, TypedJS
 
 ## 📬 Liên Hệ
 Nếu bạn thực sự thích phong cách của mình và muốn trao đổi về ý tưởng hoặc hợp tác, vui lòng liên hệ qua:
