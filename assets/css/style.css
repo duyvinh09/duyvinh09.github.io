@@ -810,35 +810,35 @@ img {
 
 
 .note {
-    position: relative!important;
-    padding: 20px 20px 20px 50px!important;
-    background: #e1f5fe!important;
-    color: #01579b!important;
-    font-size: .85rem!important;
-    line-height: 1.6em!important;
-    border-radius: 10px!important;
-    overflow: hidden!important;
+    position: relative;
+    padding: 20px 20px 20px 50px;
+    background: #e1f5fe;
+    color: #01579b;
+    font-size: .85rem;
+    line-height: 1.6em;
+    border-radius: 10px;
+    overflow: hidden;
 }
 .note:before {
-    content: ''!important;
-    width: 60px!important;
-    height: 60px!important;
-    background: #01579b!important;
-    display: block!important;
-    border-radius: 50%!important;
-    position: absolute!important;
-    top: -8px!important;
-    left: -12px!important;
-    opacity: .05!important;
+    content: '';
+    width: 60px;
+    height: 60px;
+    background: #01579b;
+    display: block;
+    border-radius: 50%;
+    position: absolute;
+    top: -8px;
+    left: -12px;
+    opacity: .05;
 }
 .note:after {
-    content: '\002A'!important;
-    position: absolute!important;
-    left: 18px!important;
-    top: 20px!important;
-    font-size: 22px!important;
-    min-width: 15px!important;
-    text-align: center!important;
+    content: '\002A';
+    position: absolute;
+    left: 18px;
+    top: 20px;
+    font-size: 22px;
+    min-width: 15px;
+    text-align: center;
 }
 
 
@@ -1284,7 +1284,6 @@ form textarea {
     height: 100%;
     top: 0;
     left: 0;
-    /* overflow: hidden; */
     pointer-events: none;
     z-index: -2;
 }
@@ -1293,7 +1292,7 @@ form textarea {
     position: absolute;
     width: 2px;
     height: 2px;
-    background-color: white;
+    background-color: #ffffff;
     box-shadow: 0 0 4px rgba(255, 255, 255, 0.8);
     animation: twinkle 3s infinite alternate ease-in-out;
 }
@@ -1328,7 +1327,7 @@ form textarea {
     height: 100%;
     pointer-events: none;
     z-index: -1;
-    /* overflow: hidden; */
+    overflow: hidden;
 }
 
 .global_shapes {
@@ -1339,42 +1338,16 @@ body.dark .global_shapes {
     display: block;
 }
 
-.home__shape-small-1,
-.home__shape-big-1,
-.home__shape-big-2 {
+.home__shape-bg {
     position: absolute;
-    border-radius: 50%;
-    filter: blur(90px);
-    z-index: -1;
-}
-
-.home__shape-small-1 {
-    width: 90px;
-    height: 150px;
-}
-
-.home__shape-small-1 {
-    background-color: var(--first-color);
-    top: -2.5rem;
-    left: -1.5rem;
-}
-
-.home__shape-big-1,
-.home__shape-big-2 {
-    width: 100px;
-    height: 200px;
-}
-
-.home__shape-big-1 {
-    background-color: var(--first-color);
-    top: 16rem;
-    right: -8rem;
-}
-
-.home__shape-big-2 {
-    background-color: var(--second-color);
-    bottom: -10rem;
-    left: -5rem;
+    width: 100%;
+    height: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    mix-blend-mode: soft-light;
+    opacity: .9;
 }
 
 
@@ -1401,27 +1374,9 @@ body.dark .global_shapes {
         margin-bottom: 1.25rem;
     }
 
-    .home__shape-small-1 {
-        width: 100px;
-        height: 250px;
-        top: -10rem;
-        left: -5rem;
-    }
-
-    .home__shape-big-1,
-    .home__shape-big-2 {
-        width: 50px;
-        height: 300px;
-    }
-
-    .home__shape-big-1 {
-        top: 10rem;
-        right: -1.5rem;
-    }
-
-    .home__shape-big-2 {
-        bottom: -14rem;
-        left: -1rem;
+    .home__shape-bg {
+        width: 28rem;
+        height: 28rem;
     }
 }
 
@@ -1480,34 +1435,5 @@ body.dark .global_shapes {
     .resume__content,
     .skills__content {
         gap: 3rem;
-    }
-
-    .home__shape-small-1,
-    .home__shape-big-1,
-    .home__shape-big-2 {
-        filter: blur(132px);
-    }
-
-    .home__shape-small-1 {
-        width: 200px;
-        height: 250px;
-        top: -5rem;
-        left: -2rem;
-    }
-
-    .home__shape-big-1,
-    .home__shape-big-2 {
-        width: 50px;
-        height: 300px;
-    }
-
-    .home__shape-big-1 {
-        top: 10rem;
-        right: -3.5rem;
-    }
-
-    .home__shape-big-2 {
-        bottom: -14rem;
-        left: 21rem;
     }
 }
